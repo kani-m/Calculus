@@ -1,0 +1,36 @@
+% % % Reference: 
+% http://tex.stackexchange.com/questions/86666/how-to-create-both-list-of-abbreviations-and-list-of-nomenclature-using-nomencl
+% ftp://ftp.kddilabs.jp/CTAN/macros/latex/contrib/acro/acro_en.pdf
+% % %
+
+% Configuration for hyperlink and list of acronyms
+\acsetup{hyperref=true, list-style=longtable, list-heading=chapter*}
+
+% class `abbrev': abbreviations:
+\DeclareAcronym{vs}{
+  short = VS ,
+  long  = Vector Space ,
+  class = abbrev
+}
+
+
+% class `nomencl': nomenclature (symbol)
+\DeclareAcronym{M}{
+  short = $\bm{M}$ ,
+  long  = 行列 ,
+  sort  = A ,
+  class = nomencl
+}
+\DeclareAcronym{v}{
+  short = $\bm{v}$ ,
+  long  = ベクトル ,
+  sort  = A ,
+  class = nomencl
+}
+\DeclareAcronym{R}{
+  short = $\mathbb{R}$ ,
+  long  = 実数 ,
+  sort  = R ,
+  class = nomencl
+}
+

@@ -1,0 +1,146 @@
+% % % Document Type
+% http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/book.html
+% http://ichiro-maruta.blogspot.jp/2013/03/latex.html
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[12pt, a4j, openany, uplatex, dvipdfmx]{jsbook}
+
+% % % Paper size
+%\usepackage[top=1truein, bottom=1truein, left=1.5truein, right=1truein]{geometry} % 用紙サイズの設定のため
+
+% % % Necessary
+\usepackage{amssymb, amsmath, amsthm, latexsym} % For mathematics [Before hyperref]
+\usepackage[dvipdfmx,setpagesize=false]{hyperref} % For inserting hyperlink [Before graphicx]
+\usepackage{pxjahyper} % https://texwiki.texjp.org/?hyperref
+\usepackage[dvipdfmx]{graphicx} % For inserting figure
+\usepackage[labelformat=simple]{subcaption} % For caption of figures and tables
+%\renewcommand\thesubfigure{(\alph{subfigure})}
+%\renewcommand\thesubtable{(\alph{subtable})}
+\usepackage[usenames,dvipdfmx]{color} % For coloring
+\usepackage[shortlabels]{enumitem} % For useful enumerate and itemize environment
+\usepackage{comment} % For commenting multiline
+\usepackage{cite} % For citing references [After hyperref]
+\usepackage{url} % For inserting URL
+\usepackage{acro} % For listing abbreviations and symbols
+\usepackage{makeidx} % For making index
+
+% % % Convenient for graph
+%\usepackage{tikz-cd} %load package after color.sty & soul.sty
+
+% % % Convenient for tables and emphasis
+%\usepackage{tabularx} % For flexible table
+%\usepackage{multirow} % For combining multi rows for table
+%\usepackage{colortbl} % For coloring table
+\usepackage{longtable} % For long table across multiple pages
+%\usepackage[normalem]{ulem} % For flexible underline etc.
+%\usepackage{ascmac} % For framing multiline -> bxascmac に変更したほうがよい?
+
+% % % 文書の見た目のためのパッケージ
+\usepackage{setspace} % For single space or double space
+\usepackage{afterpage} % For inseting newpage 
+\usepackage{datetime} % For date style of title
+\usepackage{fancyhdr} % For header and footer
+% % tocloft を include すると目次の番号と文章が被る?
+%\usepackage{tocloft} % 図目次、表目次の見た目を変えるため
+
+% % % Convenient for document of science and technology
+\usepackage{numprint} % 数値の整形
+\usepackage{siunitx} % For using SI units
+\usepackage{listings} % For inserting programming code
+
+% % % Option
+\usepackage{docmute} % For compilation of divided files
+\usepackage{bxcoloremoji} % For using emoji
+
+% % % Reference for packages
+% % geometry.styについて
+% http://joker.hatenablog.com/entry/2012/07/09/153537
+% % tocloft.styについて
+% http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/tocloft.html
+% http://tex.stackexchange.com/questions/20337/adding-word-table-before-each-entry-in-list-of-tables
+% % makeidx.sty
+% http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/makeidx.html
+% % %
+
+% % % Config for hyperref
+\hypersetup{ %
+	breaklinks=true, %
+	colorlinks=false, %
+	urlcolor=blue, %
+	urlbordercolor={0 1 1}}
+
+% % % Config for header of chapter
+% % http://oversleptabit.com/?p=390
+\makeatletter
+\def\@makechapterhead#1{%
+	\vbox to 50mm{\kern7mm\parindent\z@
+		\raggedright
+		\reset@font
+		\huge\bfseries
+		\ifnum \c@secnumdepth >\m@ne
+		\hskip10mm{\fontsize{20Q}{20Q}\selectfont\@chapapp
+			{\Huge\thechapter}\@chappos}
+		\vskip1.5mm
+		\hrule \@height 0.1mm
+		\vskip.5mm
+		\hrule \@height 0.5mm
+		\vskip2mm
+		\begin{flushright}
+			\fontsize{28Q}{29Q}\bfseries\selectfont#1\par
+		\end{flushright}
+		\vfill
+		\fi}
+	\nobreak
+}
+\makeatother
+
+% % % Define Command
+\newcommand{\bm}[1]{\mbox{\boldmath $#1$}}
+\newcommand{\dif}{\mathrm{d}}
+
+% % % Re-define names
+
+\input{./Chapter/Acronym} % List of abbreviations and symbols
+\makeindex
+\begin{document}
+	% % % Begin of Front matter
+	% 表題、目次、序文等からなるフロントマター部用の設定をする
+	\frontmatter
+	% 表紙
+	\title{微積分}
+	\author{Yuki M.}
+	\date{\usdate\today}
+	\maketitle
+	% 目次
+	%\setcounter{tocdepth}{3}
+	\tableofcontents
+	% 図、表、略語、記号一覧
+	%\listoffigures
+	%\listoftables
+	%\printacronyms[include-classes=abbrev,name=List of Abbreviations]
+	%\printacronyms[include-classes=nomencl,name=List of Symbols]
+	% 略語一覧も記号一覧も表示しない場合，参照を切るために以下を設定する
+	\acsetup{hyperref=false}
+	% % % End of Front matter
+
+	% % % Begin of Body
+	\mainmatter
+	% Chapterごとにファイルを分けて，それぞれをincludeする
+	\include{./Chapter/Ch01}
+	% % % End of Body
+
+	% % % Begin of Reference
+	\bibliographystyle{IEEEtran}
+	\nocite{*}
+	\bibliography{ref}
+	%\addcontentsline{toc}{chapter}{References}
+	% % % End of Reference
+
+	% % % Begin of index
+	%\printindex
+	% % % End of index
+
+	% % % Begin of appendix
+	%\appendix
+	%\include{./Chapter/Ap01}
+	% % % End of appendix
+\end{document}
