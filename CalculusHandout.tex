@@ -96,6 +96,24 @@
 % % % Define Command
 \newcommand{\bm}[1]{\mbox{\boldmath $#1$}}
 \newcommand{\dif}{\mathrm{d}}
+\newcommand{\set}[1]{\left\{\,#1\,\right\}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\cod}{\operatorname{cod}}
+
+% % % AMS-Theorem Environment
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem*{theorem*}{定理}
+\newtheorem{prop}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{cor}[theorem]{系}
+\newtheorem{example}{例}[theorem]
+\newtheorem*{example*}{例}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem*{definition*}{定義}
+\newtheorem*{rem*}{注意}
+\newtheorem{guide}[theorem]{参考}
 
 % % % Re-define names
 
@@ -126,6 +144,7 @@
 	\mainmatter
 	% Chapterごとにファイルを分けて，それぞれをincludeする
 	\include{./Chapter/Ch01}
+	\include{./Chapter/Ch02}
 	% % % End of Body
 
 	% % % Begin of Reference

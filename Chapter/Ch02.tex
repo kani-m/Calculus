@@ -1,0 +1,164 @@
+\chapter{初等関数}
+この章では，中学校・高等学校で学んだ関数について改めて定義を確かめ，その例である初等関数を個別に紹介する．
+
+\section{関数とは}
+数学における関数とは，ある集合から別の集合への対応関係を示したものである．イメージとして図\ref{}のようなブラックボックス（中身が分からない箱）を思い浮かべるとよい．ここでは，改めて用語を定義し，数学における関数を形作っていきたい．
+
+\begin{definition}[集合] % set
+	\textbf{集合}とは，ある対象（それは数であっても関数であっても，あるいは果物などであってもよい）を集めたものである．集合を構成する1つ1つの対象を\textbf{元}あるいは\textbf{要素}と呼ぶ．このとき，要素の順序や重複は気にしないものとする．また，対象が集合の要素であるかどうか真偽が決定できるように定義されなければならない．とくに，対象$a$が集合$A$の要素であるとき$a \in A$と表記し，要素でないとき$a \notin A$と表記する．
+\end{definition}
+\begin{rem*}
+	$a \in A$の読み方としては，「$a$は$A$の要素である」以外にも「$a$は$A$に属している」「$A$は$a$を要素として持つ」などがある．
+\end{rem*}
+\begin{example*}
+	$\set{1,2,3}$や$\set{\text{りんご}, \text{ばなな}, \text{みかん}}$は，集合の例である．このように具体的な要素を列挙することを，外延記法という．また，$\set{x \mid x \text{は10以下の正の偶数}}$も集合の例である．このように集合に属する要素が満たすべき条件を明示することを，内包記法という．
+\end{example*}
+\begin{example*}
+	$\set{1,1,3}$と$\set{1,3,1}$と$\set{1,3}$は，同一の集合である．
+\end{example*}
+\begin{example*}
+	数の集合について，一般的に使われている記号を表\ref{table:number}に示す．
+	\begin{table}[!h]
+		\centering
+		\caption{数の集合に用いられる記号}
+		\label{table:number}
+		\begin{tabular}{cc}
+			$\mathbb{N}$ & 自然数全体の集合 \\
+			$\mathbb{Z}$ & 整数全体の集合 \\
+			$\mathbb{Q}$ & 有理数全体の集合 \\
+			$\mathbb{R}$ & 実数全体の集合 \\
+			$\mathbb{C}$ & 複素数全体の集合 \\
+		\end{tabular}
+	\end{table}
+\end{example*}
+\begin{definition}[空集合] % empty set
+	集合において，要素が1つもない空っぽな集合を考えることができる．これを\textbf{空集合}といい，$\emptyset$と表記する．
+\end{definition}
+% % % 閉区間・開区間を，集合の例として紹介する？
+% % % 開閉区間を取り入れるなら，上限・下限，最大・最小も取り入れたい．
+
+\begin{definition}[部分集合] % subset
+	集合$X$が，集合$S$の\textbf{部分集合}であるとは，$X$の要素が全て$S$に属することである．このとき$X \subseteq S$と表記する．
+\end{definition}
+\begin{rem*}
+	$X \subseteq S$の読み方としては，「$X$は$S$の部分集合である」以外にも「$X$は$S$に含まれる」「$S$は$X$を包含する」などがある．また，$X$が$S$の部分集合でない場合には，$X \nsubseteq S$と表記される．
+\end{rem*}
+\begin{example*}
+	$\set{1,2,3}$は，自然数全体の集合$\mathbb{N}$の部分集合である．また，$\mathbb{N}$は，整数全体の集合$\mathbb{Z}$の部分集合である．
+\end{example*}
+
+複数の集合を用いて，新しい集合を作ることができる．ここでは，代表的なものを定義する．
+\begin{definition}[和集合] % union, join
+	\textbf{和集合}$A \cup B$とは，集合$A$と集合$B$に属する要素を集めた集合のことである．
+\end{definition}
+\begin{definition}[共通部分] % intersection
+	\textbf{共通部分}$A \cap B$とは，集合$A$と集合$B$に\underline{同時に}属する要素を集めた集合のことである．
+\end{definition}
+\begin{example*}
+	集合$A=\set{1,2,3,4,5}$と集合$B=\set{3,4,5,6,7}$に対し，和集合$A \cup B$は$\set{1,2,3,4,5,6,7}$であり，共通部分$A \cap B$は$\set{3,4,5}$である．
+\end{example*}
+
+\begin{definition}[差集合] % set difference
+	\textbf{差集合}$A \setminus B$とは，集合$A$に属する要素のうち，集合$B$に属していない要素を集めた集合のことである．
+\end{definition}
+\begin{example*}
+	集合$A=\set{1,2,3,4,5}$と集合$B=\set{3,4,5,6,7}$に対し，差集合$A \setminus B$は$\set{1,2}$である．整数全体の集合$\mathbb{Z}$と集合$\set{0}$に対し，差集合$\mathbb{Z} \setminus \set{0}$は$\set{x \mid \text{$x$は正の整数または負の整数}}$である．
+\end{example*}
+
+\begin{definition}[順序組] % ordered tuple, ordered list, ordered pair
+	\textbf{順序組}とは，ある対象を集めたものである．このとき，集合とは違い，要素の順序や重複に意味があるものとする．
+\end{definition}
+\begin{example*}
+	$(1, 2)$や$(\spadesuit, \text{K})$は，順序組の例である．このような2つの要素から成る順序組を\textbf{順序対}と呼ぶ．また，$(1, 2)$と$(2, 1)$は，異なる順序組であり，$(1, 1, 3)$と$(1, 3)$も異なる順序組である．
+\end{example*}
+\begin{definition}[直積集合] % (direct) product
+	\textbf{直積集合}$A \times B$とは，集合$A$に属する要素と，集合$B$に属する要素から，新たに順序対を作り，それら全てを要素とする集合のことである．このとき，$A \times B$の要素である順序対$(a, b)$は，直積集合の表記通りの順序を保たなければならない．
+\end{definition}
+\begin{example*}
+	集合$A=\set{1,2,3}$と集合$B=\set{\heartsuit,\diamondsuit}$に対し，直積集合$A \times B$は$\set{(1, \heartsuit),(1,\diamondsuit),(2, \heartsuit),(2,\diamondsuit),(3, \heartsuit),(3,\diamondsuit)}$である．
+\end{example*}
+% % % 全体集合，補集合，対称差，冪集合，商集合は，今回の微積分に出てこないかも？のでカット
+
+この直積集合を用いて，2つの集合間に二項関係を築くことができる．
+\begin{definition}[二項関係] % binary relation
+	集合$A, B$間の\textbf{二項関係}$R$とは，直積集合$A \times B$の部分集合である．このとき，$R$の要素である順序対$(a,b)$を，$aRb$と表記することもある．また，集合$A$を\textbf{始集合}と呼び，集合$B$を\textbf{終集合}と呼ぶ．
+\end{definition}
+\begin{example*}
+	集合$A=\set{1,2,3,4,5}$と集合$B=\set{3,4,5,6,7}$に対し，$aRb$を$a$は$b$を割り切る関係とする．このとき，関係$R$は，
+	\[
+		\set{(1,3),(1,4),(1,5),(1,6),(1,7),(2,4),(2,6),(3,3),(3,6),(4,4),(5,5)}
+	\]
+	である．
+\end{example*}
+% % % 反射的，対称的，推移的，同値関係
+% % % 単射，全射，全単射
+
+% 通常，二項関係は，様々な例を作ることができる．ここに一定の制約を加えることにより，写像を定義することができるようになる．
+また，集合$A, B$間の二項関係$R$について，一定の条件を満たすことで，性質が定義される．
+\begin{definition}[一意性]
+	\begin{align*}
+		\text{$R$は単射（左一意的）である．} &\Leftrightarrow \forall a, c \in A, \forall b \in B \left[aRb \wedge cRb \Rightarrow a = c \right] \\
+		\text{$R$は関数的（右一意的）である．} &\Leftrightarrow \forall a \in A, \forall b, c \in B \left[aRb \wedge aRc \Rightarrow b = c \right] \\
+		\text{$R$は一対一である．} &\Leftrightarrow \text{$R$は左一意的かつ右一意的である．} \\
+	\end{align*}
+\end{definition}
+\begin{definition}[全域性]
+	\begin{align*}
+	\text{$R$は全域射（左全域的）である．} &\Leftrightarrow \forall a \in A, \exists b \in B \text{ s. t. } aRb \\
+	\text{$R$は全射（右全域的）である．} &\Leftrightarrow \forall b \in B, \exists a \in A \text{ s. t. } aRb \\
+	\text{$R$は対応である．} &\Leftrightarrow \text{$R$は左全域的かつ右全域的である．} \\
+	\end{align*}
+\end{definition}
+\begin{definition}[写像および全単射]
+	\begin{align*}
+	\text{$R$は写像（一意対応）である．} &\Leftrightarrow \text{$R$は関数的（右一意的）かつ全域的（左全域的）である．} \\
+	\text{$R$は全単射（双射）である．} &\Leftrightarrow \text{$R$は単射かつ全射である．} \\
+	\end{align*}
+\end{definition}
+
+上記の写像の定義を言い換えたものが，定義\ref{def:mapping}である．
+\begin{definition}[写像] % mapping, map
+	\label{def:mapping}
+	\textbf{写像}$f$とは，始集合$A$と終集合$B$との間の関係$R$であり，始集合の要素$a$について，一意的に$aRb$が決定できるものである．
+\end{definition}
+\begin{definition}[関数] % function
+	\textbf{関数}$f$とは，終集合が数の集合であるような写像のことである．
+\end{definition}
+% % % 独立変数，従属変数
+% % % cod(f) = R -> 実数値関数
+% % % dom(f) = cod(f) = R -> 実関数
+% % % cod(f) = C -> 複素数値関数
+% % % dom(f) = cod(f) = C -> 複素関数
+\begin{rem*}
+	写像あるいは関数$f$は，始集合$A$と終集合$B$を伴って$f : A \rightarrow B$と表記される．また，始集合のことを\textbf{始域}と呼び$\dom f$と表記する．同様に，終集合のことを\textbf{終域}と呼び$\cod f$と表記する．これは，誤解を恐れずに言うならば方言のようなものである（発展するに当たって歴史的背景が異なる分野において，同じ意味を表す異なる単語があることは不思議ではない）．
+\end{rem*}
+% % % dom(f)もcod(f)もfが主語であり，関数全体の集合でどうこうを考えるためか？
+% % % 始集合，終集合は，いずれも集合と名前がついている通り集合論の話っぽい
+% % % 始域，終域は，それに対して写像，つまりマッピングのイメージに近い
+\begin{rem*}
+	写像あるいは関数$f$について，特に要素の関係を強調する場合には，$f : a \mapsto b$と表記される．$f$は関係であるため，要素として順序対$(a,b)$を持つ．これを，$afb$と表記しても良いが，一般的に$f(a) = b$と表記する．この$a$に対して，$b$が$f$によって指定されることを，「$a$が$f$によって$b$に写される」といい，$b$	のことを$a$における$f$の\textbf{値}と呼ぶ．
+\end{rem*}
+% % % 始集合，initial set, source
+% % % 始域，domain
+% % % 定義域，domain of definition
+% % % 終集合，target set, target
+% % % 終域，codomain
+% % % 値域，range
+% % % 像，image
+% % % 始集合と始域，終集合と終域は，同じ意味の語彙である．対して，定義域は始域の部分集合として，像は終域の部分集合である．値域は像の言い換えである場合がほとんどだが，文献によっては終域の意味の場合もある．
+% % % image <= range <= codomain
+% % % また，domainと書かれている場合，ほとんど定義域の意味で書かれていることが多い．写像の場合は，始域と定義域は等しいので，ほとんど区別されない．
+% % % 像については，元の像，部分集合の像，写像の像と3種類の意味がある．元の像については，値（value）と呼ばれることもある．
+\begin{example*}
+	関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto x^2$について，始域と終域はともに実数全体の集合$\mathbb{R}$である．また，$2$における$f$の値は，$4$である．つまり，$f(2) = 4$である．
+\end{example*}
+
+\begin{definition}[像]
+	写像あるいは関数$f$について，その\textbf{像}$\im f$とは，始域の要素に対する$f$の値を集めた集合のことである．像は，終域の部分集合である．
+\end{definition}
+\begin{example*}
+	関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto x^2$について，像$\im f$は，正の実数全体の集合$\mathbb{R}_{\geq 0}$である．
+\end{example*}
+
+\section{代数関数}
+% % % n次関数，解と係数の関係，因数定理，因数分解，複素共役，平方完成，関数のグラフの平行移動，簡単なグラフの概形
