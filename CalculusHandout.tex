@@ -41,6 +41,7 @@
 \usepackage{fancyhdr} % For header and footer
 % % tocloft を include すると目次の番号と文章が被る?
 %\usepackage{tocloft} % 図目次、表目次の見た目を変えるため
+\usepackage{pxrubrica} % For writing ruby
 
 % % % Convenient for document of science and technology
 \usepackage{numprint} % 数値の整形
@@ -59,7 +60,29 @@
 % http://tex.stackexchange.com/questions/20337/adding-word-table-before-each-entry-in-list-of-tables
 % % makeidx.sty
 % http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/makeidx.html
+% % pxrubrica.sty
+% https://qiita.com/zr_tex8r/items/42466cbcbeb670a3a2dc
 % % %
+
+% % % AMS-Theorem Environment
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem*{theorem*}{定理}
+\newtheorem{prop}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{cor}[theorem]{系}
+\newtheorem{example}{例}[theorem]
+\newtheorem*{example*}{例}
+\newtheorem*{definition*}{定義}
+\newtheorem*{rem*}{注意}
+\newtheorem{guide}[theorem]{参考}
+
+% 試験的に導入（定義を枠で囲むため）．2005年だからパッケージとしては古いか？（もっといいのがあるかも）
+% amsthm環境と競合するため，設定したあとで読み込む．
+% https://ctan.org/tex-archive/macros/latex/contrib/thmbox
+\usepackage[nocut, nounderline]{thmbox}
+\thmboxoptions{titlestyle={\,(\textbf{#1})}}
+\newtheorem[M]{definition}[theorem]{定義}
 
 % % % Config for hyperref
 \hypersetup{ %
@@ -72,7 +95,7 @@
 % % http://oversleptabit.com/?p=390
 \makeatletter
 \def\@makechapterhead#1{%
-	\vbox to 50mm{\kern7mm\parindent\z@
+	\vbox to 40mm{\kern7mm\parindent\z@
 		\raggedright
 		\reset@font
 		\huge\bfseries
@@ -100,20 +123,6 @@
 \newcommand{\im}{\operatorname{Im}}
 \newcommand{\dom}{\operatorname{dom}}
 \newcommand{\cod}{\operatorname{cod}}
-
-% % % AMS-Theorem Environment
-\theoremstyle{definition}
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem*{theorem*}{定理}
-\newtheorem{prop}[theorem]{命題}
-\newtheorem{lemma}[theorem]{補題}
-\newtheorem{cor}[theorem]{系}
-\newtheorem{example}{例}[theorem]
-\newtheorem*{example*}{例}
-\newtheorem{definition}[theorem]{定義}
-\newtheorem*{definition*}{定義}
-\newtheorem*{rem*}{注意}
-\newtheorem{guide}[theorem]{参考}
 
 % % % Re-define names
 

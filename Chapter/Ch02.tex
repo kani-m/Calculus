@@ -1,8 +1,14 @@
 \chapter{初等関数}
-この章では，中学校・高等学校で学んだ関数について改めて定義を確かめ，その例である初等関数を個別に紹介する．
+この章では，中学校・高等学校で学んだ\textbf{関数}について改めて定義を確かめ，その例である初等関数を個別に紹介する．
 
 \section{関数とは}
-数学における関数とは，ある集合から別の集合への対応関係を示したものである．イメージとして図\ref{}のようなブラックボックス（中身が分からない箱）を思い浮かべるとよい．ここでは，改めて用語を定義し，数学における関数を形作っていきたい．
+数学における関数とは，ある集合から別の集合への対応関係を示したものである．イメージとして図\ref{fig:blackbox}のようなブラックボックス（中身が分からない箱）を思い浮かべるとよい．ここでは，改めて用語を定義し，数学における関数を形作っていきたい．
+
+\vspace*{4cm}
+\begin{figure}[!h]
+	\caption{関数のイメージ}
+	\label{fig:blackbox}
+\end{figure}
 
 \begin{definition}[集合] % set
 	\textbf{集合}とは，ある対象（それは数であっても関数であっても，あるいは果物などであってもよい）を集めたものである．集合を構成する1つ1つの対象を\textbf{元}あるいは\textbf{要素}と呼ぶ．このとき，要素の順序や重複は気にしないものとする．また，対象が集合の要素であるかどうか真偽が決定できるように定義されなければならない．とくに，対象$a$が集合$A$の要素であるとき$a \in A$と表記し，要素でないとき$a \notin A$と表記する．
@@ -11,13 +17,14 @@
 	$a \in A$の読み方としては，「$a$は$A$の要素である」以外にも「$a$は$A$に属している」「$A$は$a$を要素として持つ」などがある．
 \end{rem*}
 \begin{example*}
-	$\set{1,2,3}$や$\set{\text{りんご}, \text{ばなな}, \text{みかん}}$は，集合の例である．このように具体的な要素を列挙することを，外延記法という．また，$\set{x \mid x \text{は10以下の正の偶数}}$も集合の例である．このように集合に属する要素が満たすべき条件を明示することを，内包記法という．
+	$\set{1,2,3}$や$\set{\text{りんご}, \text{ばなな}, \text{みかん}}$は，集合の例である．このように具体的な要素を列挙することを，\ruby{{\textbf{外}}{\textbf{延}}}{がい|えん}記法という．また，$\set{x \mid x \text{は10以下の正の偶数}}$も集合の例である．このように集合に属する要素が満たすべき条件を明示することを，\ruby{{\textbf{内}}{\textbf{包}}}{ない|ほう}記法という．
+\end{example*}
+% % % 太字は，読者の目を止まらせるためのもの->ふりがなが重要でない場合には太字にしなくてもよい？
+\begin{example*}
+	$\set{1,1,3}$と$\set{1,3,1}$と$\set{1,3}$は，同一の集合である．そのため，通常は，最も少ない要素数になるように，特定の順序に従って表記される．
 \end{example*}
 \begin{example*}
-	$\set{1,1,3}$と$\set{1,3,1}$と$\set{1,3}$は，同一の集合である．
-\end{example*}
-\begin{example*}
-	数の集合について，一般的に使われている記号を表\ref{table:number}に示す．
+	数の集合について，一般的に使われている記号を表\ref{table:number}に示す．これら数の集合のように，要素数が無限になる集合もあり，ほとんどの場合，内包記法によって表記される．
 	\begin{table}[!h]
 		\centering
 		\caption{数の集合に用いられる記号}
@@ -36,6 +43,7 @@
 \end{definition}
 % % % 閉区間・開区間を，集合の例として紹介する？
 % % % 開閉区間を取り入れるなら，上限・下限，最大・最小も取り入れたい．
+% % % ->代数関数の項に移動
 
 \begin{definition}[部分集合] % subset
 	集合$X$が，集合$S$の\textbf{部分集合}であるとは，$X$の要素が全て$S$に属することである．このとき$X \subseteq S$と表記する．
@@ -46,6 +54,9 @@
 \begin{example*}
 	$\set{1,2,3}$は，自然数全体の集合$\mathbb{N}$の部分集合である．また，$\mathbb{N}$は，整数全体の集合$\mathbb{Z}$の部分集合である．
 \end{example*}
+\begin{example*}
+	集合$S$について，空集合$\emptyset$と自分自身$S$は，常に部分集合である．
+\end{example*}
 
 複数の集合を用いて，新しい集合を作ることができる．ここでは，代表的なものを定義する．
 \begin{definition}[和集合] % union, join
@@ -54,6 +65,9 @@
 \begin{definition}[共通部分] % intersection
 	\textbf{共通部分}$A \cap B$とは，集合$A$と集合$B$に\underline{同時に}属する要素を集めた集合のことである．
 \end{definition}
+\begin{rem*}
+	$\cup$は「または」と読み，$\cap$は「かつ」と読む．
+\end{rem*}
 \begin{example*}
 	集合$A=\set{1,2,3,4,5}$と集合$B=\set{3,4,5,6,7}$に対し，和集合$A \cup B$は$\set{1,2,3,4,5,6,7}$であり，共通部分$A \cap B$は$\set{3,4,5}$である．
 \end{example*}
@@ -65,6 +79,15 @@
 	集合$A=\set{1,2,3,4,5}$と集合$B=\set{3,4,5,6,7}$に対し，差集合$A \setminus B$は$\set{1,2}$である．整数全体の集合$\mathbb{Z}$と集合$\set{0}$に対し，差集合$\mathbb{Z} \setminus \set{0}$は$\set{x \mid \text{$x$は正の整数または負の整数}}$である．
 \end{example*}
 
+ここまで定義した集合について，図示したものが図\ref{fig:VennDiagram}である．
+
+\vfill
+\begin{figure}[!h]
+	\caption{集合の図示}
+	\label{fig:VennDiagram}
+\end{figure}
+\clearpage
+
 \begin{definition}[順序組] % ordered tuple, ordered list, ordered pair
 	\textbf{順序組}とは，ある対象を集めたものである．このとき，集合とは違い，要素の順序や重複に意味があるものとする．
 \end{definition}
@@ -72,10 +95,10 @@
 	$(1, 2)$や$(\spadesuit, \text{K})$は，順序組の例である．このような2つの要素から成る順序組を\textbf{順序対}と呼ぶ．また，$(1, 2)$と$(2, 1)$は，異なる順序組であり，$(1, 1, 3)$と$(1, 3)$も異なる順序組である．
 \end{example*}
 \begin{definition}[直積集合] % (direct) product
-	\textbf{直積集合}$A \times B$とは，集合$A$に属する要素と，集合$B$に属する要素から，新たに順序対を作り，それら全てを要素とする集合のことである．このとき，$A \times B$の要素である順序対$(a, b)$は，直積集合の表記通りの順序を保たなければならない．
+	\textbf{直積集合}$A \times B$とは，集合$A$に属する要素と，集合$B$に属する要素から，新たに順序対を作り，それら全てを要素とする集合のことである．このとき，$A \times B$の要素である順序対$(a, b)$は，直積集合の表記通りの順序を保たなければならない．つまり，$a \in A, b \in B$である．
 \end{definition}
 \begin{example*}
-	集合$A=\set{1,2,3}$と集合$B=\set{\heartsuit,\diamondsuit}$に対し，直積集合$A \times B$は$\set{(1, \heartsuit),(1,\diamondsuit),(2, \heartsuit),(2,\diamondsuit),(3, \heartsuit),(3,\diamondsuit)}$である．
+	集合$A=\set{1,2,3}$と集合$B=\set{\heartsuit,\diamondsuit}$に対し，直積集合$A \times B$は$\set{(1, \heartsuit),(1,\diamondsuit),(2, \heartsuit),(2,\diamondsuit),(3, \heartsuit),(3,\diamondsuit)}$である．$(\heartsuit, 1)$など順序を逆にしたものは，$A \times B$の要素ではない．
 \end{example*}
 % % % 全体集合，補集合，対称差，冪集合，商集合は，今回の微積分に出てこないかも？のでカット
 
@@ -96,29 +119,61 @@
 % 通常，二項関係は，様々な例を作ることができる．ここに一定の制約を加えることにより，写像を定義することができるようになる．
 また，集合$A, B$間の二項関係$R$について，一定の条件を満たすことで，性質が定義される．
 \begin{definition}[一意性]
+	\label{def:uniqueness}
 	\begin{align*}
-		\text{$R$は単射（左一意的）である．} &\Leftrightarrow \forall a, c \in A, \forall b \in B \left[aRb \wedge cRb \Rightarrow a = c \right] \\
-		\text{$R$は関数的（右一意的）である．} &\Leftrightarrow \forall a \in A, \forall b, c \in B \left[aRb \wedge aRc \Rightarrow b = c \right] \\
-		\text{$R$は一対一である．} &\Leftrightarrow \text{$R$は左一意的かつ右一意的である．} \\
+	\text{$R$は単射（左一意的）である．} &\Leftrightarrow \text{集合$B$の要素$b$に対し，$aRb$が存在するならば，} \\
+	&\qquad \text{$a$は一意的に決定できる．} \\
+	\text{$R$は関数的（右一意的）である．} &\Leftrightarrow \text{集合$A$の要素$a$に対し，$aRb$が存在するならば，} \\
+	&\qquad \text{$b$は一意的に決定できる．} \\
+	\text{$R$は一対一である．} &\Leftrightarrow \text{$R$は左一意的かつ右一意的である．}
+	\end{align*}
+\end{definition}
+\begin{definition}[全域性]
+	\label{def:total}
+	\begin{align*}
+	\text{$R$は全域的（左全域的）である．} &\Leftrightarrow \text{集合$A$の要素$a$に対し，集合$B$の要素$b$が存在して，} \\
+	&\qquad \text{二項関係$R$は$aRb$を要素として持つ．} \\
+	\text{$R$は全射（右全域的）である．} &\Leftrightarrow \text{集合$B$の要素$b$に対し，集合$A$の要素$a$が存在して，} \\
+	&\qquad \text{二項関係$R$は$aRb$を要素として持つ．} \\
+	\text{$R$は対応である．} &\Leftrightarrow \text{$R$は左全域的かつ右全域的である．}
+	\end{align*}
+\end{definition}
+\begin{definition}[写像および全単射]
+	\label{def:specialRelations}
+	\begin{align*}
+	\text{$R$は写像（一意対応）である．} &\Leftrightarrow \text{$R$は関数的（右一意的）かつ全域的（左全域的）である．} \\
+	\text{$R$は全単射（双射）である．} &\Leftrightarrow \text{$R$は単射かつ全射である．}
+	\end{align*}
+\end{definition}
+\begin{comment}
+\begin{definition}[一意性]
+	\begin{align*}
+		\text{$R$は単射（左一意的）である．} &\Leftrightarrow \forall a_1, a_2 \in A, \forall b \in B \left[a_1Rb \wedge a_2Rb \Rightarrow a_1 = a_2 \right] \\
+		\text{$R$は関数的（右一意的）である．} &\Leftrightarrow \forall a \in A, \forall b_1, b_2 \in B \left[aRb_1 \wedge aRb_2 \Rightarrow b_1 = b_2 \right] \\
+		\text{$R$は一対一である．} &\Leftrightarrow \text{$R$は左一意的かつ右一意的である．}
 	\end{align*}
 \end{definition}
 \begin{definition}[全域性]
 	\begin{align*}
-	\text{$R$は全域射（左全域的）である．} &\Leftrightarrow \forall a \in A, \exists b \in B \text{ s. t. } aRb \\
-	\text{$R$は全射（右全域的）である．} &\Leftrightarrow \forall b \in B, \exists a \in A \text{ s. t. } aRb \\
-	\text{$R$は対応である．} &\Leftrightarrow \text{$R$は左全域的かつ右全域的である．} \\
+	\text{$R$は全域射（左全域的）である．} &\Leftrightarrow \forall a \in A, \exists b \in B \text{ s.t. } aRb \\
+	\text{$R$は全射（右全域的）である．} &\Leftrightarrow \forall b \in B, \exists a \in A \text{ s.t. } aRb \\
+	\text{$R$は対応である．} &\Leftrightarrow \text{$R$は左全域的かつ右全域的である．}
 	\end{align*}
 \end{definition}
-\begin{definition}[写像および全単射]
-	\begin{align*}
-	\text{$R$は写像（一意対応）である．} &\Leftrightarrow \text{$R$は関数的（右一意的）かつ全域的（左全域的）である．} \\
-	\text{$R$は全単射（双射）である．} &\Leftrightarrow \text{$R$は単射かつ全射である．} \\
-	\end{align*}
-\end{definition}
+\end{comment}
+定義\ref{def:uniqueness}と定義\ref{def:total}の一部を図示したものが，図\ref{fig:relationProperty}である．
 
-上記の写像の定義を言い換えたものが，定義\ref{def:mapping}である．
+\vfill
+\begin{figure}[!h]
+	\caption{定義\ref{def:uniqueness}と定義\ref{def:total}の図示}
+	\label{fig:relationProperty}
+\end{figure}
+\afterpage{\clearpage}
+\newpage
+
+定義\ref{def:specialRelations}における写像の定義を言い換えたものが，定義\ref{def:mapping}である．
 \begin{definition}[写像] % mapping, map
-	\label{def:mapping}
+	\label{def:mapping}%
 	\textbf{写像}$f$とは，始集合$A$と終集合$B$との間の関係$R$であり，始集合の要素$a$について，一意的に$aRb$が決定できるものである．
 \end{definition}
 \begin{definition}[関数] % function
@@ -156,9 +211,13 @@
 \begin{definition}[像]
 	写像あるいは関数$f$について，その\textbf{像}$\im f$とは，始域の要素に対する$f$の値を集めた集合のことである．像は，終域の部分集合である．
 \end{definition}
+\begin{rem*}
+	意味合いが似てるものに，値域と呼ばれる語句があるが，ほとんどの場合，像と同じ意味である．また，定義域と呼ばれる語句は，本来，始域の部分集合であるが，写像の場合は，始域と定義域は等しいので，ほとんど同一視されている．
+\end{rem*}
 \begin{example*}
 	関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto x^2$について，像$\im f$は，正の実数全体の集合$\mathbb{R}_{\geq 0}$である．
 \end{example*}
 
 \section{代数関数}
 % % % n次関数，解と係数の関係，因数定理，因数分解，複素共役，平方完成，関数のグラフの平行移動，簡単なグラフの概形
+% % % 区間の話を，2次不等式の話と結びつける？
