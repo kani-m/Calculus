@@ -9,6 +9,7 @@
 
 % % % Necessary
 \usepackage{amssymb, amsmath, amsthm, latexsym} % For mathematics [Before hyperref]
+\usepackage{empheq} % For mathematics
 \usepackage[dvipdfmx,setpagesize=false]{hyperref} % For inserting hyperlink [Before graphicx]
 \usepackage{pxjahyper} % https://texwiki.texjp.org/?hyperref
 \usepackage[dvipdfmx]{graphicx} % For inserting figure
@@ -24,7 +25,7 @@
 \usepackage{makeidx} % For making index
 
 % % % Convenient for graph
-%\usepackage{tikz-cd} %load package after color.sty & soul.sty
+\usepackage{tikz-cd} %load package after color.sty & soul.sty
 
 % % % Convenient for tables and emphasis
 \usepackage{tabularx} % For flexible table
@@ -53,6 +54,8 @@
 \usepackage{bxcoloremoji} % For using emoji
 
 % % % Reference for packages
+% % empheq.sty
+% http://muscle-keisuke.hatenablog.com/entry/2015/11/23/122725
 % % geometry.styについて
 % http://joker.hatenablog.com/entry/2012/07/09/153537
 % % tocloft.styについて
@@ -66,23 +69,25 @@
 
 % % % AMS-Theorem Environment
 \theoremstyle{definition}
-\newtheorem{theorem}{定理}[chapter]
 \newtheorem*{theorem*}{定理}
-\newtheorem{prop}[theorem]{命題}
-\newtheorem{lemma}[theorem]{補題}
-\newtheorem{cor}[theorem]{系}
-\newtheorem{example}{例}[theorem]
+%\newtheorem{prop}[theorem]{命題}
+%\newtheorem{lemma}[theorem]{補題}
+%\newtheorem{cor}[theorem]{系}
+%\newtheorem{example}{例}[theorem]
 \newtheorem*{example*}{例}
 \newtheorem*{definition*}{定義}
 \newtheorem*{rem*}{注意}
-\newtheorem{guide}[theorem]{参考}
+%\newtheorem{guide}[theorem]{参考}
 
 % 試験的に導入（定義を枠で囲むため）．2005年だからパッケージとしては古いか？（もっといいのがあるかも）
 % amsthm環境と競合するため，設定したあとで読み込む．
 % https://ctan.org/tex-archive/macros/latex/contrib/thmbox
 \usepackage[nocut, nounderline]{thmbox}
 \thmboxoptions{titlestyle={\,(\textbf{#1})}}
+\thmboxoptions{bodystyle=\upshape\noindent}
+\newtheorem[S]{theorem}{定理}[chapter]
 \newtheorem[M]{definition}[theorem]{定義}
+\newenvironment{algorithm}{\begin{thmbox}[style=S]{\textbf{アルゴリズム}}}{\end{thmbox}}
 
 % % % Config for hyperref
 \hypersetup{ %

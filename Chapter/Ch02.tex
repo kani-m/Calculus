@@ -115,6 +115,7 @@
 \end{example*}
 % % % 反射的，対称的，推移的，同値関係
 % % % 単射，全射，全単射
+% % % 二項関係は，二項演算を含み，二項演算と二項算法はニアイコールである．
 
 % 通常，二項関係は，様々な例を作ることができる．ここに一定の制約を加えることにより，写像を定義することができるようになる．
 また，集合$A, B$間の二項関係$R$について，一定の条件を満たすことで，性質が定義される．
@@ -191,7 +192,7 @@
 % % % 始集合，終集合は，いずれも集合と名前がついている通り集合論の話っぽい
 % % % 始域，終域は，それに対して写像，つまりマッピングのイメージに近い
 \begin{rem*}
-	写像あるいは関数$f$について，特に要素の関係を強調する場合には，$f : a \mapsto b$と表記される．$f$は関係であるため，要素として順序対$(a,b)$を持つ．これを，$afb$と表記しても良いが，一般的に$f(a) = b$と表記する．この$a$に対して，$b$が$f$によって指定されることを，「$a$が$f$によって$b$に写される」といい，$b$	のことを$a$における$f$の\textbf{値}と呼ぶ．
+	写像あるいは関数$f$について，特に要素の関係を強調する場合には，$f : a \mapsto b$と表記される．$f$は関係であるため，要素として順序対$(a,b)$を持つ．これを，$afb$と表記しても良いが，一般的に$f(a) = b$と表記する．この$a$に対して，$b$が$f$によって指定されることを，「$a$が$f$によって$b$に写される」といい，$b$のことを$a$における$f$の\textbf{値}と呼ぶ．
 \end{rem*}
 % % % 始集合，initial set, source
 % % % 始域，domain
@@ -205,7 +206,7 @@
 % % % また，domainと書かれている場合，ほとんど定義域の意味で書かれていることが多い．写像の場合は，始域と定義域は等しいので，ほとんど区別されない．
 % % % 像については，元の像，部分集合の像，写像の像と3種類の意味がある．元の像については，値（value）と呼ばれることもある．
 \begin{example*}
-	関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto x^2$について，始域と終域はともに実数全体の集合$\mathbb{R}$である．また，$2$における$f$の値は，$4$である．つまり，$f(2) = 4$である．
+	関数$f : \mathbb{R} \rightarrow \mathbb{R}; a \mapsto a^2$について，始域と終域はともに実数全体の集合$\mathbb{R}$である．また，$2$における$f$の値は，$4$である．つまり，$f(2) = 4$である．
 \end{example*}
 
 \begin{definition}[像]
@@ -215,9 +216,219 @@
 	意味合いが似てるものに，値域と呼ばれる語句があるが，ほとんどの場合，像と同じ意味である．また，定義域と呼ばれる語句は，本来，始域の部分集合であるが，写像の場合は，始域と定義域は等しいので，ほとんど同一視されている．
 \end{rem*}
 \begin{example*}
-	関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto x^2$について，像$\im f$は，正の実数全体の集合$\mathbb{R}_{\geq 0}$である．
+	関数$f : \mathbb{R} \rightarrow \mathbb{R}; a \mapsto a^2$について，像$\im f$は，正の実数全体の集合$\mathbb{R}_{\geq 0}$である．
 \end{example*}
 
+\newpage
 \section{代数関数}
-% % % n次関数，解と係数の関係，因数定理，因数分解，複素共役，平方完成，関数のグラフの平行移動，簡単なグラフの概形
-% % % 区間の話を，2次不等式の話と結びつける？
+% % % 押さえたい内容
+% % % n次関数，因数定理，因数分解，解と係数の関係，複素共役，平方完成，関数のグラフの平行移動，簡単なグラフの概形
+% % % 閉区間・開区間と，2次不等式
+代数関数とは，関数の中でも特に，始域の要素$a$と終域の要素$b$とを結びつける二項関係が，ある\textbf{代数式}（多項式や有理式，無理式の総称）によって定義される関数のことを指す．
+代数式の例を，表\ref{table:algebraicExpression}に示す．ここで，$x$は，単なる記号であり，これを\textbf{不定元}と呼ぶ．
+% % % 係数，項，項の次数，多項式の次数，モニック（単多項式），定数項
+% % % 因数，既約多項式
+% % % 変数，不定元
+% % % 式の値，恒等式，方程式
+
+\begin{table}[!h]
+	\centering
+	\caption{代数式}
+	\label{table:algebraicExpression}
+	\begin{tabular}{cccc|c}
+		& & & & 例 \\
+		\hline
+		\multirow{6}{*}{代数式} & & \multirow{4}{*}{多項式} & 定数式 & $3$ \\
+		& & & 一次式 & $2x+1$ \\
+		& 有理式& & 二次式 & $3x^2+x+2$ \\
+		& & & n次式 & $\sum_{i=0}^{n}a_ix^i\quad(a_n \neq 0)$ \\
+		\cline{3-5}
+		& & 分数式 & & $6/x, (2x+1)/(3x^2+x+2)$ \\
+		\cline{2-5}
+		& 無理式 & & & $\sqrt{x}, x^{2/3}$ \\
+	\end{tabular}
+\end{table}
+
+\begin{comment}
+\begin{table}[!h]
+	\centering
+	\caption{代数式}
+	%\label{table:algebraicExpression}
+	\[
+		\text{代数式}
+		\begin{cases}
+			\text{有理式}
+			\begin{cases}
+				\text{多項式} 
+				\begin{cases}
+					\text{定数式} & 3, c\\
+					\text{一次式} & ax+b \\
+					\text{二次式} & ax^2+bx+c \\
+					\text{$n$次式} & \sum_{i=0}^{n}a_ix^i
+				\end{cases} \\
+				\text{分数式} & \hspace*{-23mm}a/x
+			\end{cases} \\
+			\text{無理式} & \hspace*{-10mm}\sqrt{x}
+		\end{cases}
+	\]
+\end{table}
+\end{comment}
+
+この節では，まず，多項式の因数定理を学ぶ，因数定理は，高次の多項式を，低次の多項式の積へと分解するために必要な因数を教えてくれる定理である．これから先，代数関数の積分を計算する際に，使用する定理なので，いくつかの計算練習も行う．
+また，方程式や不等式について復習し．グラフとの関係について取り上げる．
+
+\begin{comment}
+\begin{definition}[二次式]
+	$x$を不定元，$a, b, c$を定数とし，特に$a \neq 0$とする．このとき$ax^2+bx+c$で表現される多項式を，二次式と呼ぶ．
+\end{definition}
+\end{comment}
+\begin{definition}[代入]
+	代数式$P\langle x\rangle$に対し，不定元$x$を，異なる不定元あるいは集合$S$の要素$a$に置き換えることを\textbf{代入}と呼ぶ．$a$を代入することによって得られる$P\langle a\rangle$のことを，$a$において\textbf{評価}した値，あるいは\textbf{式の値}と呼ぶ．
+\end{definition}
+\begin{definition}[根]
+	$P\langle x\rangle$を多項式とする．$P\langle x\rangle$に代入したとき，式の値が$0$となるような$a$のことを，多項式の\textbf{根}と呼ぶ．
+\end{definition}
+\begin{example*}
+	二次式の根を求める方法の1つに，因数分解を利用する方法がある．代表的な二次式の因数分解の公式に
+	\[
+		x^2-(\alpha+\beta)x+\alpha\beta = (x-\alpha)(x-\beta)
+	\]
+	があり，このように因数分解できる場合，根は$\alpha, \beta$である．
+\end{example*}
+\begin{example*}
+	二次式$x^2-5x+6$は，$(x-2)(x-3)$と因数分解できるため，この二次式の根は，$2, 3$である．また，二次式$x^2+2x+1$は，$(x+1)^2$と因数分解できる．これは，$(x+1)(x+1)$をまとめて表記したものであるため，$x^2+2x+1$の根は，$-1, -1$である．ただし，いくつかの根のうち等しい値がある場合，それらは等しい値ごとにまとめて書くため，この場合は$-1\,\text{(\textbf{重根})}$と表記される．
+\end{example*}
+\begin{theorem}[因数定理]
+	多項式$P\langle x\rangle$の根の1つを$a$と置く．このとき，$P\langle x\rangle$は$(x-a)$を因数に持ち，$P\langle x\rangle = (x-a)Q\langle x\rangle$と表現することができる．ここで$Q\langle x\rangle$は，$P\langle x\rangle$の次数より1つ低い次数を持つ多項式である．
+\end{theorem}
+\begin{rem*}
+	この定理の主張は，ある多項式$P\langle x\rangle$について，$a$を代入したとき，式の値$P\langle a\rangle$が$0$になるならば，$P\langle x\rangle$は$(x-a)$で割り切れる，ということである．従って，手計算の際には，$0, 1, -1$など小さい値から順に代入していき，式の値が$0$になった数を使って，多項式の割り算を行うという手順を踏むことになる．
+\end{rem*}
+\begin{example*}
+	多項式$P\langle x\rangle = x^3+x^2-x-1$は，$x = 1$を代入すると，$P\langle 1\rangle = 0$となる．つまり，この多項式の根の1つが$1$であることが分かる．よって，多項式$P\langle x\rangle$は，$(x-1)$を因数に持つため，これで割ることができ，$P\langle x\rangle = (x-1)(x^2+2x+1)$となる．したがって，多項式$P\langle x\rangle$を因数分解すると，$(x-1)(x+1)^2$となり，$P\langle x\rangle$の根は，$1, -1\,\text{(重根)}$であることが分かる．
+\end{example*}
+% % % 練習問題を別途作成する．
+
+\begin{definition}[恒等式]
+	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．集合$S$における，すべての要素$a$に対して，$P\langle a\rangle = Q\langle a\rangle$が成り立つとき，これを\textbf{恒等式}と呼ぶ．
+\end{definition}
+\begin{definition}[方程式]
+	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．集合$S$における，ある要素$a$に対して，$P\langle a\rangle = Q\langle a\rangle$が成り立つかどうか真偽が決定できるとき，これを\textbf{方程式}と呼ぶ．また，成り立つような$a$のことを\textbf{解}と呼ぶ．
+\end{definition}
+\begin{definition}[不等式]
+	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．また演算$\star$を$<, \leq, >, \geq$のいずれかと決める．集合$S$における，ある要素$a$に対して，$P\langle a\rangle \star Q\langle a\rangle$が成り立つかどうか真偽が決定できるとき，これを\textbf{不等式}と呼ぶ．また，成り立つような$a$のことを\textbf{解}と呼ぶ．
+\end{definition}
+\begin{rem*}
+	方程式や不等式は，解が複数あることがほとんどである．そのため，すべての解を要素として持つ集合を\textbf{解集合}と呼び，解集合を求めることを，方程式あるいは不等式を\textbf{解く}，という．また，解集合のことを，そのまま解と呼ぶこともある．
+\end{rem*}
+
+\begin{definition}[多項式関数のグラフ]
+	\label{def:graphPolynomial}%
+	ある多項式$P\langle X\rangle$が与えられているとき，関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto P\langle x\rangle$の\textbf{グラフ}とは，$f$の要素である順序対$(x, P\langle x\rangle)$を，$xy$平面上の点として描いたものである．
+	このとき$x$は，始域$\mathbb{R}$の全ての要素となり得るので，\textbf{変数}あるいは未知数と呼ばれる．
+	通常は，$x$における$f$の値を$y$と置き，$y = f(x)$と表記する．$x$における$f$の値は，$P\langle x\rangle$であるため，これを用いて$y = P\langle x\rangle$や$f(x) = P\langle x\rangle$と表記することもある．
+\end{definition}
+% % % 分数関数は，分母のゼロ割りが発生しないように定義域を変更する必要があり，無理関数も，根号の中身が負にならないように，定義域を変更する必要がある．
+\begin{rem*}
+	多項式$P\langle x\rangle$と多項式関数$f(x)$の違いは，単なる記号である$x$か，何らかの要素を取り得る変数としての$x$かの違いである．そのため，定義\ref{def:graphPolynomial}では，単なる記号であることを強調するため，多項式の不定元に$X$を用いた．
+\end{rem*}
+% % % 変数は，要素が固定である定数に対する，用語であり，要素が変化することが期待されている．
+% % % 変数が取り得る要素の集合を，変域あるいは定義域と呼ぶ．
+% % % 関数の文脈において，変数とは「関数の引数となるべき何らかの集合の元を代表するもの」である．
+\begin{definition}[閉区間・開区間]
+	ある実数$a, b$について（ただし$a \leq b$），\textbf{閉区間}$\left[a, b\right]$とは，$\set{x \mid a \leq x \leq b}$となる集合のことである．また，\textbf{開区間}$\left(a, b\right)$とは，$\set{x \mid a < x < b}$となる集合のことである．不等号の組み合わせによって，$\left[a, b\right) = \set{x \mid a \leq x < b}$と$\left(a, b\right] = \set{x \mid a < x \leq b}$も定義される．
+\end{definition}
+\begin{rem*}
+	$\left(a, b\right)$と書かれている場合，文脈から開区間なのか順序対なのか判断する必要がある．また，閉区間・開区間については，数直線上に描くことができ，図\ref{fig:interval}のようになる．特に，ある実数$c$よりも小さい数の集合を，$\left(-\infty, c\right)$と表記したり，ある実数$c$以上の数の集合を$\left[c, \infty\right)$と表記したりする．
+	
+	\vfill
+	\begin{figure}[!h]
+		\caption{閉区間と開区間の図示}
+		\label{fig:interval}
+	\end{figure}
+\end{rem*}
+% % % \infty は通常，実数には含まれないが，ここではあえて触れないことにする．
+\clearpage
+
+\begin{example*}
+	多項式$x-2$と$2x-3$について，$x = 1$を代入すると，お互いの式の値が$-1$となり等しくなる．つまり，方程式$x-2 = 2x-3$の解は，$x = 1$である．これは，一次関数$y = x-2$と$y = 2x-3$の交点$(1, -1)$に対応する．
+\end{example*}
+\begin{example*}
+	方程式$x^2-5x+6 = x-2$の解は，$x = 2, 4$である．これは，二次関数$y = x^2-5x+6$と一次関数$y = x-2$の交点$(2, 0), (4, 2)$に対応する．
+\end{example*}
+\begin{example*}
+	不等式$x^2-5x+6 \leq x-2$の解は，$2 \leq x \leq 4$である．これは，二次関数$y = x^2-5x+6$よりも一次関数$y = x-2$のほうが大きくなるか等しくなる$x$の区間が，$\left[2, 4\right]$であることに対応する．同様に，不等式$x^2-5x+6 > x-2$の解は，$x < 2, 4 < x$である．これは，二次関数$y = x^2-5x+6$よりも一次関数$y = x-2$のほうが小さくなる$x$の区間が，$\left(-\infty, 2\right) \cup \left(4, \infty\right)$であることに対応する．
+\end{example*}
+
+ここまでの例について，図示したものが図\ref{fig:equation}である．
+
+\vfill
+\begin{figure}[!h]
+	\caption{方程式の解，不等式の解とグラフとの関係の図示}
+	\label{fig:equation}
+\end{figure}
+\clearpage
+
+% % % 解と係数の関係，複素共役 -> 計算上のテクニックになるので，とりあえず一旦保留．というか代数学の話では??
+% % % 平方完成，関数のグラフの平行移動，簡単なグラフの概形
+この節の終わりに，二次関数のグラフを書くために必要な手法である平方完成を学ぶ．
+\begin{definition}[平方完成]
+	二次式$ax^2+bx+c$について，$a(x-p)^2+q$の形に変形することを\textbf{平方完成}と呼ぶ．
+\end{definition}
+% % % 一般形 : ax^2+bx+c
+% % % 標準形 : a(x-p)^2+q
+% % % (因数)分解形 : a(x-s)(x-t)
+\begin{algorithm}
+	\begin{align}
+		ax^2+bx+c &= a\left(x^2+\frac{b}{a}x\right)+c \tag{1} \\
+		&= a\left\{\left(x+\frac{b}{2a}\right)^2-\frac{b^2}{4a^2}\right\}+c \tag{2} \\
+		&= a\left(x+\frac{b}{2a}\right)^2-\frac{b^2}{4a}+c \tag{3} \\
+		&= a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a} \tag{4}
+	\end{align}
+	
+	各計算ステップは，以下の通りである．
+	\begin{enumerate}[(1)]
+		\item $ax^2+bx$について$a$でくくる．
+		\item $x^2+\frac{b}{a}x$を変形する．ここでは，$\left(x+\frac{b}{2a}\right)^2$を展開することによって，$x^2+\frac{b}{a}x+\frac{b^2}{4a^2}$となるので，余分な$\frac{b^2}{4a^2}$を引くことによって，$x^2+\frac{b}{a}x$を作っている．
+		\item $a$を$\left(x+\frac{b}{2a}\right)^2$と$-\frac{b^2}{4a^2}$に，分配する．
+		\item $-\frac{b^2}{4a}$と$c$を通分する．
+	\end{enumerate}
+
+	結果として
+	\begin{empheq}[left=\empheqlbrace]{align*}
+		p &= -\frac{b}{2a} \\
+		q &= -\frac{b^2-4ac}{4a}
+	\end{empheq}
+	を得る．
+\end{algorithm}
+\begin{rem*}
+	二次関数$y = f(x) = a(x-p)^2+q$は，$x = p$のとき，$a$の符号によって，最大値あるいは最小値として$y = q$をとる．この，二次関数の最大値あるいは最小値を決める点$(p, q)$を，\textbf{頂点}と呼ぶ．
+\end{rem*}
+\begin{example*}
+	二次式$x^2-5x+6$は，$\left(x-\frac{5}{2}\right)^2-\frac{1}{4}$と平方完成できるため，二次関数$f(x) = x^2-5x+6$は，頂点$\left(\frac{5}{2}, -\frac{1}{4}\right)$を通るグラフである．また，この関数の像$\im f$は，区間$\left[-\frac{1}{4}, \infty\right)$である．
+\end{example*}
+
+\begin{definition}[グラフの平行移動]
+	多項式関数$f(x)$が与えられているとき，新たに多項式関数$g(x) = f(x-p) + q$を作ることができる．このとき，$g(x)$のグラフは，$f(x)$のグラフを$x$軸方向に$p$，$y$軸方向に$q$だけ動かしたものであり，これをグラフの\textbf{平行移動}という．
+\end{definition}
+\begin{example*}
+	関数$f(x) = x^2$とすると，関数$g(x) = x^2-5x+6$は，$g(x) = \left(x-\frac{5}{2}\right)^2-\frac{1}{4} = f\left(x-\frac{5}{2}\right)-\frac{1}{4}$と書くことができる．したがって，$g(x) = x^2-5x+6$のグラフは，$f(x) = x^2$のグラフを，$x$軸方向に$\frac{5}{2}$，$y$軸方向に$-\frac{1}{4}$だけ動かしたものである．
+\end{example*}
+
+ここまでの例について，図示したものが図\ref{fig:quadraticFunction}である．
+
+\vfill
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+		\draw[help lines, step=0.25] (0,0) grid (10,10);
+		\draw (5,5) node[below left]{O};
+		\draw[thick, ->] (-0.5,5)--(10.5,5) node[below=3.0] {$x$};
+		\draw[thick, ->] (5,-0.5)--(5,10.5) node[right=3.0] {$y$};
+	\end{tikzpicture}
+	\caption{二次関数のグラフの図示}
+	\label{fig:quadraticFunction}
+\end{figure}
+\clearpage
+
+\section{指数関数}
