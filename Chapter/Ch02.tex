@@ -274,7 +274,7 @@
 \end{table}
 \end{comment}
 
-この節では，まず，多項式の因数定理を学ぶ，因数定理は，高次の多項式を，低次の多項式の積へと分解するために必要な因数を教えてくれる定理である．これから先，代数関数の積分を計算する際に，使用する定理なので，いくつかの計算練習も行う．
+この節では，まず，多項式の因数定理を学ぶ．因数定理は，高次の多項式を，低次の多項式の積へと分解するために必要な因数を教えてくれる定理である．これから先，代数関数の積分を計算する際に，使用する定理なので，いくつかの計算練習も行う．
 また，方程式や不等式について復習し．グラフとの関係について取り上げる．
 
 \begin{comment}
@@ -302,8 +302,9 @@
 	多項式$P\langle x\rangle$の根の1つを$a$と置く．このとき，$P\langle x\rangle$は$(x-a)$を因数に持ち，$P\langle x\rangle = (x-a)Q\langle x\rangle$と表現することができる．ここで$Q\langle x\rangle$は，$P\langle x\rangle$の次数より1つ低い次数を持つ多項式である．
 \end{theorem}
 \begin{rem*}
-	この定理の主張は，ある多項式$P\langle x\rangle$について，$a$を代入したとき，式の値$P\langle a\rangle$が$0$になるならば，$P\langle x\rangle$は$(x-a)$で割り切れる，ということである．従って，手計算の際には，$0, 1, -1$など小さい値から順に代入していき，式の値が$0$になった数を使って，多項式の割り算を行うという手順を踏むことになる．
+	この定理の主張は，ある多項式$P\langle x\rangle$について，$a$を代入したとき，式の値$P\langle a\rangle$が$0$になるならば，$P\langle x\rangle$は$(x-a)$で割り切れる，ということである．従って，手計算の際には，$0, 1, -1$など小さい値から順に代入していき，式の値が$0$になった数を使って，多項式の割り算を行うという手順を踏むことになる．$0, 1, -1$以外に代入するべき数としては，定数項の約数について，正負両方を考えるとよい\footnotemark[1]．
 \end{rem*}
+\footnotetext[1]{多項式$P\langle x\rangle$が，それ以上割ることができない（既約な）多項式に分解できたとして，それぞれの多項式の定数項が整数であれば，もとの多項式$P\langle x\rangle$の定数項も整数であり，各定数項の倍数になるため．}
 \begin{example*}
 	多項式$P\langle x\rangle = x^3+x^2-x-1$は，$x = 1$を代入すると，$P\langle 1\rangle = 0$となる．つまり，この多項式の根の1つが$1$であることが分かる．よって，多項式$P\langle x\rangle$は，$(x-1)$を因数に持つため，これで割ることができ，$P\langle x\rangle = (x-1)(x^2+2x+1)$となる．したがって，多項式$P\langle x\rangle$を因数分解すると，$(x-1)(x+1)^2$となり，$P\langle x\rangle$の根は，$1, -1\,\text{(重根)}$であることが分かる．
 \end{example*}
@@ -313,28 +314,15 @@
 	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．集合$S$における，すべての要素$a$に対して，$P\langle a\rangle = Q\langle a\rangle$が成り立つとき，これを\textbf{恒等式}と呼ぶ．
 \end{definition}
 \begin{definition}[方程式]
-	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．集合$S$における，ある要素$a$に対して，$P\langle a\rangle = Q\langle a\rangle$が成り立つかどうか真偽が決定できるとき，これを\textbf{方程式}と呼ぶ．また，成り立つような$a$のことを\textbf{解}と呼ぶ．
+	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．集合$S$における，ある要素$a$に対して，$P\langle a\rangle = Q\langle a\rangle$が成り立つかどうか真偽が決定できるとき，これを\textbf{方程式}と呼ぶ．また，等号が成り立つような$a$のことを\textbf{解}と呼ぶ．
 \end{definition}
 \begin{definition}[不等式]
-	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．また演算$\star$を$<, \leq, >, \geq$のいずれかと決める．集合$S$における，ある要素$a$に対して，$P\langle a\rangle \star Q\langle a\rangle$が成り立つかどうか真偽が決定できるとき，これを\textbf{不等式}と呼ぶ．また，成り立つような$a$のことを\textbf{解}と呼ぶ．
+	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．また演算$\star$を$<, \leq, >, \geq$のいずれかと決める．集合$S$における，ある要素$a$に対して，$P\langle a\rangle \star Q\langle a\rangle$が成り立つかどうか真偽が決定できるとき，これを\textbf{不等式}と呼ぶ．また，不等号が成り立つような$a$のことを\textbf{解}と呼ぶ．
 \end{definition}
 \begin{rem*}
-	方程式や不等式は，解が複数あることがほとんどである．そのため，すべての解を要素として持つ集合を\textbf{解集合}と呼び，解集合を求めることを，方程式あるいは不等式を\textbf{解く}，という．また，解集合のことを，そのまま解と呼ぶこともある．
+	方程式や不等式は，解が複数あることがほとんどである．そのため，すべての解を要素として持つ集合を\textbf{解集合}と呼び，解集合を求めることを，方程式あるいは不等式を\textbf{解く}，という\footnotemark[2]．また，解集合のことを，そのまま解と呼ぶこともある．
 \end{rem*}
-
-\begin{definition}[多項式関数のグラフ]
-	\label{def:graphPolynomial}%
-	ある多項式$P\langle X\rangle$が与えられているとき，関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto P\langle x\rangle$の\textbf{グラフ}とは，$f$の要素である順序対$(x, P\langle x\rangle)$を，$xy$平面上の点として描いたものである．
-	このとき$x$は，始域$\mathbb{R}$の全ての要素となり得るので，\textbf{変数}あるいは未知数と呼ばれる．
-	通常は，$x$における$f$の値を$y$と置き，$y = f(x)$と表記する．$x$における$f$の値は，$P\langle x\rangle$であるため，これを用いて$y = P\langle x\rangle$や$f(x) = P\langle x\rangle$と表記することもある．
-\end{definition}
-% % % 分数関数は，分母のゼロ割りが発生しないように定義域を変更する必要があり，無理関数も，根号の中身が負にならないように，定義域を変更する必要がある．
-\begin{rem*}
-	多項式$P\langle x\rangle$と多項式関数$f(x)$の違いは，単なる記号である$x$か，何らかの要素を取り得る変数としての$x$かの違いである．そのため，定義\ref{def:graphPolynomial}では，単なる記号であることを強調するため，多項式の不定元に$X$を用いた．
-\end{rem*}
-% % % 変数は，要素が固定である定数に対する，用語であり，要素が変化することが期待されている．
-% % % 変数が取り得る要素の集合を，変域あるいは定義域と呼ぶ．
-% % % 関数の文脈において，変数とは「関数の引数となるべき何らかの集合の元を代表するもの」である．
+\footnotetext[2]{当然，解が存在しない場合も考えられ，その場合の解集合は，空集合$\emptyset$である．}
 \begin{definition}[閉区間・開区間]
 	ある実数$a, b$について（ただし$a \leq b$），\textbf{閉区間}$\left[a, b\right]$とは，$\set{x \mid a \leq x \leq b}$となる集合のことである．また，\textbf{開区間}$\left(a, b\right)$とは，$\set{x \mid a < x < b}$となる集合のことである．不等号の組み合わせによって，$\left[a, b\right) = \set{x \mid a \leq x < b}$と$\left(a, b\right] = \set{x \mid a < x \leq b}$も定義される．
 \end{definition}
@@ -350,14 +338,29 @@
 % % % \infty は通常，実数には含まれないが，ここではあえて触れないことにする．
 \clearpage
 
+\begin{definition}[多項式関数のグラフ]
+	\label{def:graphPolynomial}%
+	ある多項式$P\langle X\rangle$が与えられているとき，関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto P\langle x\rangle$の\textbf{グラフ}とは，$f$の要素である順序対$(x, P\langle x\rangle)$を，$xy$平面上の点として描いたものである．
+	このとき$x$は，始域$\mathbb{R}$の全ての要素となり得るので，\textbf{変数}あるいは未知数と呼ばれる．
+	通常は，$x$における$f$の値を$y$と置き，$y = f(x)$と表記する．$x$における$f$の値は，$P\langle x\rangle$であるため，これを用いて$y = P\langle x\rangle$や$f(x) = P\langle x\rangle$と表記することもある．
+\end{definition}
+% % % 分数関数は，分母のゼロ割りが発生しないように定義域を変更する必要があり，無理関数も，根号の中身が負にならないように，定義域を変更する必要がある．
+\begin{rem*}
+	多項式$P\langle x\rangle$と多項式関数$f(x)$の違いは，単なる記号である$x$か，何らかの要素を取り得る変数としての$x$かの違いである．そのため，定義\ref{def:graphPolynomial}では，単なる記号であることを強調するため，多項式の不定元に$X$を用いた．
+\end{rem*}
+% % % 変数は，要素が固定である定数に対する，用語であり，要素が変化することが期待されている．
+% % % 変数が取り得る要素の集合を，変域あるいは定義域と呼ぶ．
+% % % 関数の文脈において，変数とは「関数の引数となるべき何らかの集合の元を代表するもの」である．
+
 \begin{example*}
-	多項式$x-2$と$2x-3$について，$x = 1$を代入すると，お互いの式の値が$-1$となり等しくなる．つまり，方程式$x-2 = 2x-3$の解は，$x = 1$である．これは，一次関数$y = x-2$と$y = 2x-3$の交点$(1, -1)$に対応する．
+	多項式$x-2$と$2x-3$について，$x = 1$を代入すると，お互いの式の値が$-1$となり等しくなる．つまり，方程式$x-2 = 2x-3$の解は，$x = 1$である\footnotemark[3]．これは，一次関数$y = x-2$と$y = 2x-3$の交点$(1, -1)$に対応する．
 \end{example*}
 \begin{example*}
-	方程式$x^2-5x+6 = x-2$の解は，$x = 2, 4$である．これは，二次関数$y = x^2-5x+6$と一次関数$y = x-2$の交点$(2, 0), (4, 2)$に対応する．
+	方程式$x^2-5x+6 = x-2$の解は，$x = 2, 4$である\footnotemark[3]．これは，二次関数$y = x^2-5x+6$と一次関数$y = x-2$の交点$(2, 0), (4, 2)$に対応する．
 \end{example*}
+\footnotetext[3]{解集合という意味での解であれば$x = \set{1}$あるいは$x = \set{2,4}$と書かなければならない．ここでは，等号が成り立つ要素としての解であり，$x = 2,4$と書いてある場合は，「解は，$2$または$4$」と読む．}
 \begin{example*}
-	不等式$x^2-5x+6 \leq x-2$の解は，$2 \leq x \leq 4$である．これは，二次関数$y = x^2-5x+6$よりも一次関数$y = x-2$のほうが大きくなるか等しくなる$x$の区間が，$\left[2, 4\right]$であることに対応する．同様に，不等式$x^2-5x+6 > x-2$の解は，$x < 2, 4 < x$である．これは，二次関数$y = x^2-5x+6$よりも一次関数$y = x-2$のほうが小さくなる$x$の区間が，$\left(-\infty, 2\right) \cup \left(4, \infty\right)$であることに対応する．
+	不等式$x^2-5x+6 \leq x-2$の解は，$2 \leq x \leq 4$である．これは，二次関数$y = x^2-5x+6$よりも一次関数$y = x-2$のほうが大きくなるか等しくなる$x$の区間が，$\left[2, 4\right]$であることに対応する．同様に，不等式$x^2-5x+6 > x-2$の解は，$x < 2,\; 4 < x$である．これは，二次関数$y = x^2-5x+6$よりも一次関数$y = x-2$のほうが小さくなる$x$の区間が，$\left(-\infty, 2\right) \cup \left(4, \infty\right)$であることに対応する．
 \end{example*}
 
 ここまでの例について，図示したものが図\ref{fig:equation}である．
@@ -371,7 +374,10 @@
 
 % % % 解と係数の関係，複素共役 -> 計算上のテクニックになるので，とりあえず一旦保留．というか代数学の話では??
 % % % 平方完成，関数のグラフの平行移動，簡単なグラフの概形
-この節の終わりに，二次関数のグラフを書くために必要な手法である平方完成を学ぶ．
+ここまでで，二次関数のグラフと，二次方程式あるいは二次不等式の解との関係を見てきた．
+グラフを図示することにより，代数的な解と，幾何的な交点の$x$座標が同一視できることが分かる．
+このように，グラフの図示，つまり関数の可視化は，関数の気持ちを理解する上でかかせないポイントであるため，ここでは，二次関数のグラフを描く際に使われる平方完成という手法を紹介する．平方完成は，二次関数のグラフを描くためだけではなく，代数関数の積分においても重要な役割を果たす計算手法である．
+
 \begin{definition}[平方完成]
 	二次式$ax^2+bx+c$について，$a(x-p)^2+q$の形に変形することを\textbf{平方完成}と呼ぶ．
 \end{definition}
@@ -421,13 +427,50 @@
 \begin{figure}[!h]
 	\centering
 	\begin{tikzpicture}
-		\draw[help lines, step=0.25] (0,0) grid (10,10);
-		\draw (5,5) node[below left]{O};
-		\draw[thick, ->] (-0.5,5)--(10.5,5) node[below=3.0] {$x$};
-		\draw[thick, ->] (5,-0.5)--(5,10.5) node[right=3.0] {$y$};
+		\draw[help lines, step=0.25] (0,0) grid (8,8);
+		\draw (4,4) node[below left]{O};
+		\draw[thick, ->] (-0.5,4)--(8.5,4) node[below=3.0] {$x$};
+		\draw[thick, ->] (4,-0.5)--(4,8.5) node[right=3.0] {$y$};
 	\end{tikzpicture}
 	\caption{二次関数のグラフの図示}
 	\label{fig:quadraticFunction}
+\end{figure}
+\clearpage
+
+\begin{definition}[分数関数のグラフ]
+	ある多項式$P\langle X\rangle, Q\langle X\rangle$が与えられているとき，分数式$R\langle X\rangle$は，$R\langle X\rangle = P\langle X\rangle/Q\langle X\rangle$と表現することができる．
+	関数$f : \mathbb{R}\setminus\set{a \mid a\text{は$Q\langle X\rangle$の根}} \rightarrow \mathbb{R}; x \mapsto R\langle x\rangle$のグラフとは，$f$の要素である順序対$(x, R\langle x\rangle)$を，$xy$平面上の点として描いたものである．
+\end{definition}
+\begin{example*}
+	分数関数$f(x) = (x-2)/(x^2-6x+8)$は，$x = 2, 4$において値が定義されない．しかし，$x^2-6x+8 = (x-2)(x-4)$と因数分解することにより，分数式$(x-2)/(x^2-6x+8)$と分数式$1/(x-4)$は，$\mathbb{R}\setminus\set{2,4}$において，恒等式となる．ここで，分数関数$g(x) = 1/(x-4)$は，集合$\mathbb{R}\setminus\set{4}$において定義されているため，$f(2) = g(2) = -1/2$と値を定義することによって，分数関数$f(x)$と$g(x)$は，同一視できる．
+\end{example*}
+\begin{rem*}
+	計算上，分数関数を考える場合，値を再定義するという回りくどいことは，ほとんど行われない．すでに見たように，分母を因数分解することによって，多項式の約分を行うことができるため，それ以上約分できない既約な分数関数の形に変形し，計算を行っていく．
+\end{rem*}
+\begin{definition}[無理関数のグラフ]
+	ある無理式$P\langle X\rangle$が与えられているとき，関数
+	\[
+	f : \set{x \mid \text{各項の値が実数になる$x$の区間の共通部分}} \rightarrow \mathbb{R}; x \mapsto P\langle x\rangle
+	\]
+	のグラフとは，$f$の要素である順序対$(x, P\langle x\rangle)$を，$xy$平面上の点として描いたものである．
+\end{definition}
+\begin{example*}
+	無理関数$f(x) = \sqrt{x}$は，区間$\left[0, \infty\right)$において，実数の値をとる．また，無理関数$g(x) = \sqrt{x-2}-1$は，区間$\left[2, \infty\right)$において，実数の値をとる．実数値関数において，根号内は負数にしない，ということに気をつけて，区間を選ぶ必要がある．
+\end{example*}
+
+ここまでの例について，図示したものが図\ref{fig:algebraicFunction}である．
+
+\vfill
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+	\draw[help lines, step=0.25] (0,0) grid (10,10);
+	\draw (5,5) node[below left]{O};
+	\draw[thick, ->] (-0.5,5)--(10.5,5) node[below=3.0] {$x$};
+	\draw[thick, ->] (5,-0.5)--(5,10.5) node[right=3.0] {$y$};
+	\end{tikzpicture}
+	\caption{代数関数のグラフの図示}
+	\label{fig:algebraicFunction}
 \end{figure}
 \clearpage
 
