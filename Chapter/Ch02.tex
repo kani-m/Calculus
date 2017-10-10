@@ -104,6 +104,7 @@
 
 この直積集合を用いて，2つの集合間に二項関係を築くことができる．
 \begin{definition}[二項関係] % binary relation
+	\label{def:binaryRelation}%
 	集合$A, B$間の\textbf{二項関係}$R$とは，直積集合$A \times B$の部分集合である．このとき，$R$の要素である順序対$(a,b)$を，$aRb$と表記することもある．また，集合$A$を\textbf{始集合}と呼び，集合$B$を\textbf{終集合}と呼ぶ．
 \end{definition}
 \begin{example*}
@@ -309,6 +310,8 @@
 	多項式$P\langle x\rangle = x^3+x^2-x-1$は，$x = 1$を代入すると，$P\langle 1\rangle = 0$となる．つまり，この多項式の根の1つが$1$であることが分かる．よって，多項式$P\langle x\rangle$は，$(x-1)$を因数に持つため，これで割ることができ，$P\langle x\rangle = (x-1)(x^2+2x+1)$となる．したがって，多項式$P\langle x\rangle$を因数分解すると，$(x-1)(x+1)^2$となり，$P\langle x\rangle$の根は，$1, -1\,\text{(重根)}$であることが分かる．
 \end{example*}
 % % % 練習問題を別途作成する．
+% % % 整数係数多項式の有理数解
+% % % アイゼンシュタインの既約判定定理
 
 \begin{definition}[恒等式]
 	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．集合$S$における，すべての要素$a$に対して，$P\langle a\rangle = Q\langle a\rangle$が成り立つとき，これを\textbf{恒等式}と呼ぶ．
@@ -445,7 +448,7 @@
 	分数関数$f(x) = (x-2)/(x^2-6x+8)$は，$x = 2, 4$において値が定義されない．しかし，$x^2-6x+8 = (x-2)(x-4)$と因数分解することにより，分数式$(x-2)/(x^2-6x+8)$と分数式$1/(x-4)$は，$\mathbb{R}\setminus\set{2,4}$において，恒等式となる．ここで，分数関数$g(x) = 1/(x-4)$は，集合$\mathbb{R}\setminus\set{4}$において定義されているため，$f(2) = g(2) = -1/2$と値を定義することによって，分数関数$f(x)$と$g(x)$は，同一視できる．
 \end{example*}
 \begin{rem*}
-	計算上，分数関数を考える場合，値を再定義するという回りくどいことは，ほとんど行われない．すでに見たように，分母を因数分解することによって，多項式の約分を行うことができるため，それ以上約分できない既約な分数関数の形に変形し，計算を行っていく．
+	計算上，分数関数を考える場合，値を再定義するという回りくどいことは，ほとんど行われない．すでに見たように，分母を因数分解することによって，多項式の約分を行うことができるため，それ以上約分できない既約な分数式で表現される分数関数の形に変形し，計算を行っていく．
 \end{rem*}
 \begin{definition}[無理関数のグラフ]
 	ある無理式$P\langle X\rangle$が与えられているとき，関数
@@ -454,6 +457,7 @@
 	\]
 	のグラフとは，$f$の要素である順序対$(x, P\langle x\rangle)$を，$xy$平面上の点として描いたものである．
 \end{definition}
+% % % 無理式と冪根を結びつける．特に，$x$の有理数乗が，$x$の冪根の累乗と定義されることを示しておくことで，指数関数に入りやすくなる？
 \begin{example*}
 	無理関数$f(x) = \sqrt{x}$は，区間$\left[0, \infty\right)$において，実数の値をとる．また，無理関数$g(x) = \sqrt{x-2}-1$は，区間$\left[2, \infty\right)$において，実数の値をとる．実数値関数において，根号内は負数にしない，ということに気をつけて，区間を選ぶ必要がある．
 \end{example*}
@@ -475,3 +479,234 @@
 \clearpage
 
 \section{指数関数}
+多項式関数は，$x$を変数，$n$をパラメータとして，$f(x) = x^n$という形を取っていた．このとき，$x$を\textbf{底}，$n$を\textbf{指数}と呼ぶ．つまり，多項式関数は，指数をパラメータとして先に決め，底を変数として，ある集合の中の要素を取り得るよう定めたもの，と考えることができる．
+
+指数関数は，この多項式関数における変数とパラメータの役割を交換し，底をパラメータとして先に決め，指数を変数として，ある集合の中の要素を取り得るよう定める．つまり，$a$を底，$x$を指数として，$f(x) = a^x$を考える．
+この関数の性質を考える上で，基本となる考え方が，自然数においての指数法則である．指数法則が成り立つ範囲を実数の範囲まで拡張したとき，特定の数の集合を一対一の関係で結びつける写像が存在する．それこそが，指数関数であることを，この節では見ていく．
+
+\begin{definition}[自然数における指数法則]
+	\label{def:exponentialLawN}%
+	$a, b$を$0$を除いた実数，$n, m$を自然数（ただし，$n > m$）とする．このとき，
+	\begin{enumerate}[1.]
+		\item $a^na^m = a^{n+m}$
+		\item $a^n / a^m = a^{n-m}$
+		\item $\left(a^n\right)^m = a^{nm} = \left(a^m\right)^n$
+		\item $\left(ab\right)^n = a^nb^n$
+	\end{enumerate}
+	が成り立ち，このことを，指数法則と呼ぶ．
+\end{definition}
+\begin{example*}
+	$2^2\cdot 2^3$は，$(2\cdot2)\cdot(2\cdot2\cdot2)$であるため，$2^5$となる．つまり，$2^2\cdot2^3 = 2^{2+3} = 2^5$である．
+	$2^3/2^2$は，$(2\cdot2\cdot2)/(2\cdot2)$であるため，$2^1$となる．つまり，$2^3\cdot2^2 = 2^{3-2} = 2^1$である．
+	$\left(2^2\right)^3$は，$(2\cdot2)\cdot(2\cdot2)\cdot(2\cdot2)$であるため，$2^6$となる．つまり，$\left(2^2\right)^3 = 2^{2\cdot3} = 2^6$である．
+\end{example*}
+
+定義\ref{def:exponentialLawN}において，$n > m$を仮定した．しかし，$m$を自然数として，$a^0 = 1$，$a^{-m} = 1/a^m$と定義することによって，指数法則は，整数の範囲まで拡張される．
+
+\begin{definition}[整数における指数法則]
+	\label{def:exponentialLawZ}%
+	$a, b$を$0$を除いた実数，$n, m$を整数とする．このとき，
+	\begin{enumerate}[1.]
+		\item $a^n\cdot a^m = a^{n+m}$
+		%\item $a^n / a^m = a^{n-m}$
+		\item $\left(a^n\right)^m = a^{nm} = \left(a^m\right)^n$
+		\item $\left(ab\right)^n = a^nb^n$
+	\end{enumerate}
+	が成り立ち，このことを，指数法則と呼ぶ．
+\end{definition}
+
+また，$n$を整数，$m$を自然数として，$r = n/m$となる有理数を考える．このとき，$a$を正の実数とし，$a^r = a^{n/m} = \left(\sqrt[m]{a}\right)^n$と定義すれば，指数法則は，有理数の範囲まで拡張される\footnotemark[1]．また，実数$x$は，$r < x < s$という不等式が成り立つように有理数$r, s$を選んで表すことができる．$r, s$は，$x$に有理数の範囲でいくらでも近づけていけるため，$a$を正の実数とすれば，$a^x$の値を，$a^r, a^s$を用いて評価できる．このとき，指数法則は，実数の範囲まで拡張され，実数全体の集合$\mathbb{R}$と，正の実数全体の集合$\mathbb{R}_{>0}$を一対一の関係で結びつける\footnotemark[2]．この関係を，$a$を底とする指数関数と呼ぶ．
+\footnotetext[1]{指数の取り得る範囲は拡張されるが，代わりに，底の取り得る範囲は縮小する．このような場合，基本的に変数の取り得る範囲を拡張することが優先される．}
+\footnotetext[2]{この関係は，全域的であるため，写像である．さらに，終域が数の集合であるため，関数でもある．直積集合$\mathbb{R}\times\mathbb{R}$の部分集合である関係$R$が，指数法則が成り立つ写像として定義されていく味わい深さを感じ取って貰えれば幸いである．}
+% 有理数の指数を，冪根（累乗根）と紐づける．
+
+\begin{definition}[実数における指数法則]
+	\label{def:exponentialLawR}%
+	$a, b$を正の実数，$x, y$を実数とする．このとき，
+	\begin{enumerate}[1.]
+		\item $a^x\cdot a^y = a^{x+y}$
+		%\item $a^x / a^y = a^{x-y}$
+		\item $\left(a^x\right)^y = a^{xy} = \left(a^y\right)^x$
+		\item $\left(ab\right)^x = a^xb^x$
+	\end{enumerate}
+	が成り立ち，このことを，指数法則と呼ぶ．
+\end{definition}
+\begin{definition}[指数関数]
+	$1$を除いた正の実数$a$が与えられているとき，関数$f : \mathbb{R} \rightarrow \mathbb{R}; x \mapsto a^x$のことを，$a$を底とする\textbf{指数関数}と呼ぶ．$x$における$f$の値が，$a^x$であるため，これを用いて$y = a^x$や$f(x) = a^x$と表記される．
+\end{definition}
+\begin{rem*}
+	指数関数$f(x) = a^x$の像$\im f$は，正の実数全体の集合$\mathbb{R}_{>0}$である．
+\end{rem*}
+\begin{example*}
+	$a > 1$，$0 < a < 1$の場合における指数関数のグラフを示したものが，図\ref{fig:exponentialFunction}である．$a > 1$の例として，$y = 2^x$を，$0 < a< 1$の例として，$y=0.5^x$を選んだ．
+	
+	\begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				clip = true,
+				clip mode=individual,
+				domain = -2.5:2.5,
+				restrict y to domain=-0.5:4.5,
+				axis lines=center,
+				xlabel=$x$,
+				xlabel style={at=(current axis.right of origin), anchor=west},
+				ylabel=$y$,
+				xmin=-2.5,
+				xmax=2.5,
+				enlarge x limits={rel=0.07},
+				ymin=-0.5,
+				ymax=4.5,
+				enlarge y limits={rel=0.13}				
+			]
+			\node[below left] at (axis cs:0,0) {O};
+			\addplot[samples=100]{2^x} node[above, pos=1]{$y = 2^x$};
+			\addplot[samples=100]{0.5^x} node[above,pos=0]{$y = 0.5^x$};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{指数関数のグラフの図示}
+		\label{fig:exponentialFunction}
+	\end{figure}
+\end{example*}
+
+\begin{definition}[単調関数]
+	実数の部分集合である開区間$(a, b)$で定義されている関数$f(x)$について，一定の条件を満たすことで，性質が定義される．ここで，$s, t$は，$(a, b)$に属する実数とする．
+	\begin{align*}
+		\text{$f(x)$は，$(a, b)$で\textbf{単調増加}である．} &\Leftrightarrow \text{$s < t$ならば，$f(s) < f(t)$である．} \\
+		\text{$f(x)$は，$(a, b)$で\textbf{単調非減少}である．} &\Leftrightarrow \text{$s < t$ならば，$f(s) \leq f(t)$である．} \\
+		\text{$f(x)$は，$(a, b)$で\textbf{単調減少}である．} &\Leftrightarrow \text{$s < t$ならば，$f(s) > f(t)$である．} \\
+		\text{$f(x)$は，$(a, b)$で\textbf{単調非増加}である．} &\Leftrightarrow \text{$s < t$ならば，$f(s) \geq f(t)$である．} 
+	\end{align*}
+\end{definition}
+\begin{rem*}
+	「単調増加」のことを，「狭義単調増加」と呼び，「単調非減少」のことを「広義単調増加」と呼ぶこともある．同様に，「単調減少」のことを，「狭義単調減少」と呼び，「単調非増加」のことを「広義単調減少」と呼ぶこともある．
+\end{rem*}
+\begin{example*}
+	指数関数$y = a^x$は，$a > 1$のとき，単調増加であり，$0 < a < 1$のとき，単調減少である．
+\end{example*}
+
+\newpage
+\section{対数関数}
+指数関数$y = a^x$では，$x$を変数とし，それに伴って変化する値である$y$を求めた．
+この節では，$y$を変数とし，それに伴って変化する$x$を求めるための新しい関数を定義する．
+そのために，定義\ref{def:binaryRelation}で学んだ関係の概念に付随する，逆関係を導入する．その後，写像や関数に対応する逆写像，逆関数を定義し，指数関数の逆関数として，対数関数を定義することにする．
+% 対数関数とは，「底$a$を何乗したら値$y$になるのか」を考えるための関数である．
+% 指数関数$y = a^x$は，単射であるため，正の実数$M$に対して，$a^x = M$となる実数$x$が一意的に定まる．
+
+\begin{definition}[逆関係]
+	集合$A, B$間の二項関係$R$における\textbf{逆関係}$R^{-1}$とは，
+	\[
+		R^{-1} = \set{(b,a) \mid (a,b)\in R}
+	\]
+	と定義される集合のことである．
+\end{definition}
+\begin{definition}[逆写像・逆関数]
+	写像あるいは関数$f$について，$f$は二項関係とみなせるため，その逆関係$f^{-1}$が定まる．
+	この$f^{-1}$が，写像あるいは関数の定義を満たした場合，$f^{-1}$を，$f$の\textbf{逆写像}あるいは\textbf{逆関数}と呼ぶ．
+\end{definition}
+\begin{theorem}
+	関係$R$が，一対一ならば，逆関係$R^{-1}$も，一対一である．
+\end{theorem}
+\begin{theorem}
+	\label{thm:inverseMapping1}%
+	写像$f$が，全単射ならば，逆写像$f^{-1}$が存在し，$f^{-1}$も全単射である．
+\end{theorem}
+\begin{rem*}
+	このとき，$\dom f = \cod f^{-1}$であり，$\cod f = \dom f^{-1}$である．つまり，写像$f : A \rightarrow B$に対して，逆写像$f^{-1} : B \rightarrow A$である．
+\end{rem*}
+\begin{theorem}
+	\label{thm:inverseMapping2}%
+	写像あるいは関数$f$が，単射であるとき，写像あるいは関数$g: \dom f \rightarrow \im f$は，全単射である．
+\end{theorem}
+
+指数関数$f(x) = a^x$は，単射であるため，定理\ref{thm:inverseMapping2}より，関数$g : \mathbb{R} \rightarrow \mathbb{R}_{>0}; x \mapsto a^x$は，全単射となる．このとき，定理\ref{thm:inverseMapping1}より，逆写像$g^{-1} : \mathbb{R}_{>0} \rightarrow \mathbb{R}$が存在する．この逆写像は，終域が数の集合であるため，逆関数でもある．
+\begin{definition}[対数関数]
+	$a$を$1$を除いた正の実数とする．関数$f : \mathbb{R} \rightarrow \mathbb{R}_{>0}; x \mapsto y = a^x$について，逆関数$f^{-1} : \mathbb{R}_{>0} \rightarrow \mathbb{R}; y \mapsto x$を，$a$を底とする\textbf{対数関数}と呼ぶ．このとき，$y$における$f^{-1}$の値を$x = \log_a y$と表記する．
+\end{definition}
+\begin{rem*}
+	逆関数のままでは，扱いにくいため，素直に関数$f : \mathbb{R}_{>0} \rightarrow \mathbb{R}; x \mapsto \log_a x$と書かれることが多い．これは，対数関数の定義中で出てくる文字を置き換えただけである．
+\end{rem*}
+\begin{rem*}
+	平たく言えば，対数関数とは，「底$a$を何乗したら$x$になるのか」を考えるための関数である．すなわち，$2^3 = 8$であるため，$\log_2 8 = 3$である．
+\end{rem*}
+\begin{rem*}
+	定義より明らかに，$\log_a a^x = x$であり，$a^{\log_a y} = y$である．すなわち，
+	\begin{align*}
+		\log_a a &= \log_a a^1 = 1 \\
+		\log_a 1 &= \log_a a^0 = 0
+	\end{align*}
+	となる．
+\end{rem*}
+\begin{rem*}
+	対数関数$y = \log_a x$は，$a > 1$のとき，単調増加であり，$0 < a < 1$のとき，単調減少である．
+\end{rem*}
+
+\begin{theorem}
+	指数法則から，以下に示す対数関数の各種性質が導かれる．ここで，$a, b$は$1$を除いた正の実数，$x, y$は正の実数，$r$は実数とする．
+	\begin{enumerate}[itemsep=2ex, label*=\arabic*.]
+		\item $\log_a xy = \log_a x + \log_a y$
+		\item $\displaystyle \log_a \frac{x}{y} = \log_a x - \log_a y$
+		\item $\log_a x^r = r\log_a x$
+		\item $\displaystyle \log_a x = \frac{\log_b x}{\log_b a}$
+	\end{enumerate}
+\end{theorem}
+
+図\ref{fig:logarithmicFunction}に，$a > 1$，$0 < a < 1$の場合における対数関数のグラフを示す．$a > 1$の例として，$y = \log_2 x$を，$0 < a< 1$の例として，$y=\log_{1/2} x$を選んだ．また，図\ref{fig:inverseFunction}に，指数関数$y = 2^x$のグラフと対数関数$y = \log_2 x$のグラフを示した．一般的に，ある関数$f$のグラフとその逆関数$f^{-1}$のグラフは，直線$y = x$に関して対称となる．
+
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	clip = true,
+	clip mode=individual,
+	domain = 0.01:4.50,
+	restrict y to domain=-4.0:4.0,
+	axis lines=center,
+	xlabel=$x$,
+	xlabel style={at=(current axis.right of origin), anchor=west},
+	ylabel=$y$,
+	ylabel style={at=(current axis.above origin), anchor=south},
+	xmin=-0.5,
+	xmax=4.5,
+	enlarge x limits={rel=0.07},
+	ymin=-3.0,
+	ymax=3.0,
+	enlarge y limits={rel=0.13}				
+	]
+	\node[below left] at (axis cs:0,0) {O};
+	\addplot[samples=200]{ln(x)/ln(2)} node[above left, pos=1]{$y = \log_2 x$};
+	\addplot[samples=200]{ln(x)/ln(0.5)} node[below left,pos=1]{$y = \log_{1/2} x$};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{対数関数のグラフの図示}
+	\label{fig:logarithmicFunction}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	clip = true,
+	clip mode=individual,
+	%domain = 0.01:4.50,
+	restrict y to domain=-4.0:4.0,
+	axis lines=center,
+	xlabel=$x$,
+	xlabel style={at=(current axis.right of origin), anchor=west},
+	ylabel=$y$,
+	xmin=-4.5,
+	xmax=4.5,
+	enlarge x limits={rel=0.07},
+	ymin=-3.5,
+	ymax=4.0,
+	enlarge y limits={rel=0.13}				
+	]
+	\node[below left] at (axis cs:0,0) {O};
+	\addplot[domain = -4.50:4.50, samples=200]{2^x} node[above right, pos=0]{$y = 2^x$};
+	\addplot[domain =  0.01:4.50, samples=200]{ln(x)/ln(2)} node[above right, pos=0]{$y = \log_2 x$};
+	\addplot[dashed, samples=200]{x} node[above,pos=1]{$y = x$};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{指数関数と対数関数のグラフの図示}
+	\label{fig:inverseFunction}
+\end{figure}
