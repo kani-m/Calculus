@@ -303,15 +303,47 @@
 	多項式$P\langle x\rangle$の根の1つを$a$と置く．このとき，$P\langle x\rangle$は$(x-a)$を因数に持ち，$P\langle x\rangle = (x-a)Q\langle x\rangle$と表現することができる．ここで$Q\langle x\rangle$は，$P\langle x\rangle$の次数より1つ低い次数を持つ多項式である．
 \end{theorem}
 \begin{rem*}
-	この定理の主張は，ある多項式$P\langle x\rangle$について，$a$を代入したとき，式の値$P\langle a\rangle$が$0$になるならば，$P\langle x\rangle$は$(x-a)$で割り切れる，ということである．従って，手計算の際には，$0, 1, -1$など小さい値から順に代入していき，式の値が$0$になった数を使って，多項式の割り算を行うという手順を踏むことになる．$0, 1, -1$以外に代入するべき数としては，定数項の約数について，正負両方を考えるとよい\footnotemark[1]．
+	この定理の主張は，ある多項式$P\langle x\rangle$について，$a$を代入したとき，式の値$P\langle a\rangle$が$0$になるならば，$P\langle x\rangle$は$(x-a)$で割り切れる，ということである．手計算の際には，$0, 1, -1$など小さい値から順に代入していき，式の値が$0$になった数を使って，多項式の割り算を行うという手順を踏むことになる．
 \end{rem*}
-\footnotetext[1]{多項式$P\langle x\rangle$が，それ以上割ることができない（既約な）多項式に分解できたとして，それぞれの多項式の定数項が整数であれば，もとの多項式$P\langle x\rangle$の定数項も整数であり，各定数項の倍数になるため．}
 \begin{example*}
 	多項式$P\langle x\rangle = x^3+x^2-x-1$は，$x = 1$を代入すると，$P\langle 1\rangle = 0$となる．つまり，この多項式の根の1つが$1$であることが分かる．よって，多項式$P\langle x\rangle$は，$(x-1)$を因数に持つため，これで割ることができ，$P\langle x\rangle = (x-1)(x^2+2x+1)$となる．したがって，多項式$P\langle x\rangle$を因数分解すると，$(x-1)(x+1)^2$となり，$P\langle x\rangle$の根は，$1, -1\,\text{(重根)}$であることが分かる．
 \end{example*}
 % % % 練習問題を別途作成する．
-% % % 整数係数多項式の有理数解
-% % % アイゼンシュタインの既約判定定理
+
+\begin{theorem}
+	$a_i\quad(0 \leq i \leq n)$は，整数であり，特に，$a_n, a_0$は$0$でない整数とする．
+	多項式$P\langle x\rangle$を，$P\langle x\rangle = a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$とおく．
+	このとき，$P\langle x\rangle$の根が，有理数$r$であるならば，
+	\[
+	r = \frac{\text{$a_0$の約数}}{\text{$a_n$の約数}}
+	\]
+	と書くことができる．
+\end{theorem}
+% % % 約数の定義をしていないが，整数の約数を，プラスマイナス含めたものにする
+\begin{rem*}
+	この定理は，整数係数の多項式を，因数定理を用いて因数分解する場合に有効である．
+	言い換えれば，多項式の根となり得る候補を絞るための定理であるため，候補全てが根とならなかった場合，その多項式は，無理数根か，複素数根しか取らないことが分かる．
+\end{rem*}
+% % % モニックな整数係数多項式において，整数根を持たないならば有理数根を持たない
+\begin{theorem}[アイゼンシュタインの既約判定定理]
+	$a_i\quad(0 \leq i \leq n)$は，整数であり，特に，$a_n, a_0$は$0$でない整数とする．
+	多項式$P\langle x\rangle$を，$P\langle x\rangle = a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$とおく．
+	ある素数$p$が存在し，以下の条件を満たすならば，有理数係数の範囲で因数分解したとき，$P\langle x\rangle$は，$k$次式以上の多項式を因数に持つ．
+	\begin{itemize}
+		\item $a_0$は，$p$の倍数だが，$p^2$の倍数でない．
+		\item $a_i\quad(1 \leq i \leq k-1)$は，全て$p$の倍数である．
+		\item $a_k$は，$p$の倍数でない．
+	\end{itemize}
+
+	特に，$k = n$の場合，$P\langle x\rangle$は，それ以上有理数係数の範囲で因数分解できない既約な多項式である．
+\end{theorem}
+% % % 整数係数の範囲で既約であれば，有理数係数の範囲でも既約である．
+\begin{rem*}
+	この定理は，十分条件であるため，有理数係数の範囲で既約な多項式だからといって，条件を満たすような素数$p$があるとは限らない．例えば，$x^2+5x+2$は，有理数係数の範囲で既約であるが，条件を満たすような素数は存在しない．
+\end{rem*}
+\begin{example*}
+	多項式$x^2+2x+6$について，$p = 2$とする．$a_0 = 6$は，$p$の倍数かつ$p^2$の倍数でない．$a_1 = 2$は，$p$の倍数である．$a_2 = 1$は，$p$の倍数でない．よって，アイゼンシュタインの既約判定定理より，この多項式は，有理数係数の範囲で既約である．
+\end{example*}
 
 \begin{definition}[恒等式]
 	$P\langle x\rangle, Q\langle x\rangle$を代数式とする．集合$S$における，すべての要素$a$に対して，$P\langle a\rangle = Q\langle a\rangle$が成り立つとき，これを\textbf{恒等式}と呼ぶ．
@@ -497,7 +529,7 @@
 \end{definition}
 \begin{example*}
 	$2^2\cdot 2^3$は，$(2\cdot2)\cdot(2\cdot2\cdot2)$であるため，$2^5$となる．つまり，$2^2\cdot2^3 = 2^{2+3} = 2^5$である．
-	$2^3/2^2$は，$(2\cdot2\cdot2)/(2\cdot2)$であるため，$2^1$となる．つまり，$2^3\cdot2^2 = 2^{3-2} = 2^1$である．
+	$2^3/2^2$は，$(2\cdot2\cdot2)/(2\cdot2)$であるため，$2^1$となる．つまり，$2^3/2^2 = 2^{3-2} = 2^1$である．
 	$\left(2^2\right)^3$は，$(2\cdot2)\cdot(2\cdot2)\cdot(2\cdot2)$であるため，$2^6$となる．つまり，$\left(2^2\right)^3 = 2^{2\cdot3} = 2^6$である．
 \end{example*}
 
@@ -618,6 +650,7 @@
 	\label{thm:inverseMapping2}%
 	写像あるいは関数$f$が，単射であるとき，写像あるいは関数$g: \dom f \rightarrow \im f$は，全単射である．
 \end{theorem}
+% % % 関数$f$と逆関数$f^{-1}$に対して，常に$f(f^{-1}(x)) = f^{-1}(f(x)) = x$が成り立つ．
 
 指数関数$f(x) = a^x$は，単射であるため，定理\ref{thm:inverseMapping2}より，関数$g : \mathbb{R} \rightarrow \mathbb{R}_{>0}; x \mapsto a^x$は，全単射となる．このとき，定理\ref{thm:inverseMapping1}より，逆写像$g^{-1} : \mathbb{R}_{>0} \rightarrow \mathbb{R}$が存在する．この逆写像は，終域が数の集合であるため，逆関数でもある．
 \begin{definition}[対数関数]
@@ -709,4 +742,398 @@
 	\end{tikzpicture}
 	\caption{指数関数と対数関数のグラフの図示}
 	\label{fig:inverseFunction}
+\end{figure}
+
+\clearpage
+\section{三角関数}
+自然現象をはじめとする様々な現象を観察すると，おおまかに比例関係・指数増加・周期変化の組み合わせであることが確認できる．
+つまり，とある現象をモデル化する（数式で記述する）ためには，それら一つ一つに数式を対応させなければならない．
+例えば，比例関係は代数関数$f(x) = ax+b$と，指数増加は指数関数$f(x) = Ca^x$と，それぞれ対応づけることができる．
+この節では，周期変化を記述するための関数として，三角関数を定義し，その性質を見ていく．
+
+% 指数関数・対数関数は，全域にわたって単調に増減のどちらかを行う関数であった．関数の中には，周期的に増減を繰り返すものを考えることができる．この節では，周期的に変化を繰り返す関数の代表例として，三角関数を学ぶ．
+% 三角関数は，定義のされ方から円と関わりが深い．また，その定義から，三角比の値を取ることが分かる．
+% 自然現象をモデル化するに当たって，比例関係・指数増加・周期変化を記述する必要がある．
+% そのため，それぞれに代数関数・指数関数・三角関数が対応し，自然現象のモデルを用いて変化を予測するために，関数の変化を考える必要があるということを改めて認識して欲しい．
+
+\begin{definition}[周期関数]
+	関数$f$の始域の要素$T$に対して，常に$f(x) = f(x + T)$が成り立つとき，関数$f$は\textbf{周期的}であるといい，$f$を\textbf{周期関数}と呼ぶ．また，関数を周期的にするような$T$のうち，絶対値が最小かつ正のものを\textbf{周期}と呼ぶ．
+\end{definition}
+
+\begin{definition}[単位円]
+	関係$R = \set{(x,y) \mid x^2+y^2 = 1}$のグラフを，\textbf{単位円}と呼ぶ．
+\end{definition}
+\begin{definition}[動径]
+	ある半直線OAが与えられているとき，半直線OAを，点Oを中心に$\theta$だけ回転させた半直線OPのことを\textbf{動径}と呼ぶ．また，半直線OAのことを\textbf{始線}と呼ぶ．
+\end{definition}
+\begin{rem*}
+	$\theta$が正のとき，反時計回りに回転し，$\theta$が負のとき，時計回りに回転するものと定義する．
+\end{rem*}
+\begin{rem*}
+	円と$x$軸との交点のうち，$x$座標が正のものを点Aとして，原点Oから伸びる半直線OAを始線とするとき，円と動径の交点が点Pである．
+\end{rem*}
+\begin{definition}[弧度法]
+	動径OPと単位円周上の点$\mathrm{A} = (1, 0)$が与えられているとき，弧APの長さが1になるような動径の角度$\theta$を$\SI{1}{\radian}$と定義する．この角度の決め方を，弧度法という．弧度法に対して，円周一周分の角度を$\SI{360}{\degree}$と定義する方法を，度数法という．
+\end{definition}
+% % % 長さの定義とか，円周の定義とかしてない！
+\begin{example*}
+	$\SI{360}{\degree} = \SI{2\pi}{\radian}$である．
+\end{example*}
+
+\begin{definition}[三角関数]
+	\label{def:trigonometricFunction}%
+	単位円周上の点$\mathrm{A} = (1, 0)$を用いて始線OAを定める．
+	このとき，角度$\theta$を決めることによって，単位円と動径の交点Pの座標は一意的に決定できる．
+	また，動径の定義より，角度の変化に伴う座標の変化は周期的になる．
+	ここで，角度$\theta$と点Pの$x$座標の関係$\theta \mapsto x$，角度$\theta$と点Pの$y$座標の関係$\theta \mapsto y$は，それぞれ写像の定義を満たす．
+	そのため，$x = f(\theta) = \cos(\theta)$，$y = g(\theta) = \sin(\theta)$と定義すると，
+	写像$f, g$は，周期$2\pi$の周期関数$f, g : \mathbb{R} \rightarrow [-1, 1]$となる．
+	
+	また，動径OPと直線$x=1$との交点をTとすると，点Tの$y$座標は，すべての実数を取り得る．
+	この関係$\theta \mapsto y$も写像の定義を満たすため，$y = h(\theta) = \tan(\theta)$と定義すると，
+	写像$h$は，周期$\pi$の周期関数$h : \mathbb{R}\setminus\set{\pi/2 + n\pi \mid n \in \mathbb{Z}} \rightarrow \mathbb{R}$となる．
+	
+	図\ref{fig:unitCircle}は，三角関数の定義を図示したものである．
+\end{definition}
+
+\begin{figure}[!h]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=10cm,
+	height=10cm,
+	clip = true,
+	clip mode=individual,
+	%domain = 0.01:4.50,
+	%restrict y to domain=-1.0:1.0,
+	axis lines=center,
+	xlabel=$x$,
+	xlabel style={at=(current axis.right of origin), anchor=west},
+	ylabel=$y$,
+	xmin=-1.0,
+	xmax=1.0,
+	enlarge x limits={rel=0.10},
+	ymin=-1.0,
+	ymax=1.0,
+	enlarge y limits={rel=0.10},
+	xtick distance=1,
+	x tick label style={anchor=north west},
+	ytick distance=1
+	]
+	\node[below left] at (axis cs:0,0) {O};
+	\addplot[samples=200, domain = 0:2*pi, name path=circle]( {cos(deg(x))}, {sin(deg(x))} );
+	\node[above left] at (axis cs:1,0) {A};
+	
+	\draw[name path=op] (axis cs:0,0) -- ++(45:5.5cm);
+	\fill[name intersections={of=circle and op}] (intersection-1) circle (0pt) node[anchor=west] {P=$(\cos\theta, \sin\theta)$};
+	
+	\coordinate (O) at (axis cs:0,0);
+	\coordinate (A) at (axis cs:1,0);
+	\draw pic["$\theta$",draw=black, ->, thick, angle eccentricity=1.2, angle radius=1cm] {angle=A--O--intersection-1};
+	
+	\draw[name path=ot] (axis cs:1,-1.3) -- (axis cs:1,1.3);
+	\fill[name intersections={of=op and ot}] (intersection-1) circle (0pt) node[anchor=west] {T=$(1, \tan\theta)$};
+	\end{axis}	
+	\end{tikzpicture}
+	\caption{三角関数の定義}
+	\label{fig:unitCircle}
+\end{figure}
+
+\begin{rem*}
+	括弧の中身が複雑でない場合，$\sin\theta, \cos\theta, \tan\theta$のように括弧が省略されて書かれることが多い．
+\end{rem*}
+\begin{rem*}
+	円と動径の交点Pの座標を$(x,y)$，線分OPの長さを$r$とすると，
+	\begin{align*}
+		\sin\theta &= \frac{y}{r} & \cos\theta &= \frac{x}{r} & \tan\theta &= \frac{y}{x} \\[5pt]
+		\csc\theta &= \frac{r}{y} & \sec\theta &= \frac{r}{x} & \cot\theta &= \frac{x}{y}
+	\end{align*}
+	のように$x, y, r$の組み合わせ6種類を考えることができる．これらは，定義\ref{def:trigonometricFunction}の別な形であり，これら6つの関数のことを\textbf{三角関数}と呼ぶ．
+\end{rem*}
+\begin{example*}
+	$xy$平面の，原点から見て右上・左上・左下・右下の領域を，それぞれ第一象限・第二象限・第三象限・第四象限と呼ぶ．
+	定義より，三角関数の値がとる符号は，動径がどの象限に入るかによって定まり，それを図示したものが，図\ref{fig:triFuncSign}である．
+	
+	\vspace*{5cm}
+	\begin{figure}[!h]
+		\centering
+		\caption{三角関数の値の符号}
+		\label{fig:triFuncSign}
+	\end{figure}
+\end{example*}
+\begin{example*}
+	特徴的な三角関数の値を表\ref{table:triFuncValue}に示す．他の角度における三角関数の値は，動径がどの象限にあるのか，表に載っている角度とどのような関係にあるのか，などいくつかの条件をもとに考えるとよい．
+	
+	\begin{table}[!h]
+		\centering
+		\caption{三角関数の代表値}
+		\label{table:triFuncValue}
+		\begin{tabular}{c|ccccc}
+			$\theta$ & 0 & $\pi/6$ & $\pi/4$ & $\pi/3$ & $\pi/2$ \\
+			\hline
+			$\sin\theta$ & 0 & $1/2$ & $1/\sqrt{2}$ & $\sqrt{3}/2$ & 1 \\
+			\hline
+			$\cos\theta$ & 1 & $\sqrt{3}/2$ & $1/\sqrt{2}$ & $1/2$ & 0 \\
+			\hline
+			$\tan\theta$ & 0 & $1/\sqrt{3}$ & 1 & $\sqrt{3}$ & -
+		\end{tabular}
+	\end{table}
+\end{example*}
+
+\begin{theorem}[三角関数の相互関係]
+	三角関数の定義より，以下の相互関係が導かれる．
+	\begin{enumerate}[itemsep=2ex, label*=\arabic*.]
+		\item $\displaystyle \tan\theta = \frac{\sin\theta}{\cos\theta}$
+		\item $\displaystyle \sin^2\theta + \cos^2\theta = 1$
+		\item $\displaystyle \tan^2\theta + 1 = \frac{1}{\cos^2\theta} = \sec^2\theta$
+	\end{enumerate}
+\end{theorem}
+
+三角関数のグラフを，図\ref{fig:triFunc}に示す．
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[t]{.5\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$\theta$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-2.0,
+		xmax=7.0,
+		ymin=-1.0,
+		ymax=1.0,
+		enlarge y limits={rel=0.10},
+		xtick={-1.57, 1.57, 3.14, 4.71, 6.28},
+		xticklabels={$-\pi/2$,$\pi/2$, $\pi$, $3\pi/2$, $2\pi$},
+		x tick label style={anchor=north},
+		ytick distance=1
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -2:7]{sin(deg(x))};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$\sin\theta$のグラフ}
+	\end{subfigure}%
+	\begin{subfigure}[t]{.5\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$\theta$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-2.0,
+		xmax=7.0,
+		ymin=-1.0,
+		ymax=1.0,
+		enlarge y limits={rel=0.10},
+		xtick={-1.57, 1.57, 3.14, 4.71, 6.28},
+		xticklabels={$-\pi/2$,$\pi/2$, $\pi$, $3\pi/2$, $2\pi$},
+		x tick label style={anchor=north},
+		ytick distance=1
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -2:7]{cos(deg(x))};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$\cos\theta$のグラフ}
+	\end{subfigure}\\%
+	\begin{subfigure}[t]{.5\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$\theta$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-2.0,
+		xmax=7.0,
+		ymin=-1.0,
+		ymax=1.0,
+		enlarge y limits={rel=0.10},
+		xtick={-1.57, 1.57, 3.14, 4.71, 6.28},
+		xticklabels={$-\pi/2$,$\pi/2$, $\pi$, $3\pi/2$, $2\pi$},
+		x tick label style={anchor=north},
+		ytick distance=1
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -4*pi/3:-2*pi/3]{tan(deg(x))};
+		\addplot[samples=200, domain = -pi/3:pi/3]{tan(deg(x))};
+		\addplot[samples=200, domain = 2*pi/3:4*pi/3]{tan(deg(x))};
+		\addplot[samples=200, domain = 5*pi/3:7*pi/3]{tan(deg(x))};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$\tan\theta$のグラフ}
+	\end{subfigure}
+	\caption{三角関数のグラフ}
+	\label{fig:triFunc}
+\end{figure}
+
+\clearpage
+\begin{definition}[偶関数]
+	関数$f$について，常に$f(-x) = f(x)$が成り立つとき，関数$f$を\textbf{偶関数}と呼ぶ．このとき，グラフは$y$軸に関して対称となる．
+\end{definition}
+\begin{definition}[奇関数]
+	関数$f$について，常に$f(-x) = -f(x)$が成り立つとき，関数$f$を\textbf{奇関数}と呼ぶ．このとき，グラフは原点に関して対称となる．
+\end{definition}
+\begin{example*}
+	関数$f(\theta) = \cos\theta$は，偶関数である．関数$f(\theta) = \sin\theta$，$f(\theta) = \tan\theta$は，奇関数である．
+\end{example*}
+
+\begin{theorem}[加法定理]
+	実数$\alpha, \beta$について，以下の等式が成り立つ．
+	\begin{enumerate}[itemsep=2ex, label*=\arabic*.]
+		\item $\displaystyle \sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta$
+		\item $\displaystyle \cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta$
+	\end{enumerate}
+\end{theorem}
+\begin{example*}
+	三角関数の加法定理を第一象限内で図示したものが，図\ref{fig:triAdditionTheorem}である．
+	
+	\begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+		\coordinate (A) at (3,0);
+		\coordinate (B) at (3,1.25);
+		\coordinate (C) at (3,4.25);
+		\coordinate (P) at (1.75,4.25);
+		
+		\node[below left] at (O) {O};
+		\node[below right] at (A) {A};
+		\node[right] at (B) {B};
+		\node[above right] at (C) {C};
+		\node[above left] at (P) {P};
+
+		\draw[name path=oa] (O) -- (A);
+		\draw[name path=ob] (O) -- (B);
+		\draw[name path=op] (O) -- (P) node at ($(O)!0.5!(P)$) [left]{1};
+		\draw[name path=ab] (A) -- (B);
+		\draw[name path=bc] (B) -- (C);
+		\draw[name path=bp] (B) -- (P);
+		\draw[name path=pc] (P) -- (C);
+
+		\draw[thick, black] ($(A)!8pt!(O)$)--($(A)!8pt!(B)!8pt!90:(B)$)--($(A)!8pt!(B)$);
+		\draw[thick, black] ($(B)!8pt!(O)$)--($(B)!8pt!(P)!8pt!90:(P)$)--($(B)!8pt!(P)$);
+		\draw[thick, black] ($(C)!8pt!(B)$)--($(C)!8pt!(P)!8pt!90:(P)$)--($(C)!8pt!(P)$);
+
+		\draw pic["$\alpha$",draw=black, -, thick, angle eccentricity=1.2, angle radius=1cm] {angle=A--O--B};
+		\draw pic["$\beta$",draw=black, -, thick, angle eccentricity=1.2, angle radius=1.2cm] {angle=B--O--P};
+		\draw pic["$\alpha$",draw=black, -, thick, angle eccentricity=1.2, angle radius=1cm] {angle=C--B--P};
+		\end{tikzpicture}
+		\caption{加法定理の幾何学的意味}
+		\label{fig:triAdditionTheorem}
+	\end{figure}
+\end{example*}
+% % % 倍角・半角の公式の導出や和積・積和の公式の導出
+% % % 例題を入れる
+
+\clearpage
+\section{逆三角関数}
+この節では，三角関数の逆関数として，逆三角関数を定義する．
+そもそも三角関数は，周期関数であるため，単射ではなく，逆関数を作ることができない．そのため，0を含むような1周期を始域とする制限された三角関数を考えることで，単射とすることができ，逆三角関数を定義することができるようになる．
+　
+\begin{definition}[逆三角関数]
+	制限された三角関数を，
+	\begin{align*}
+		\sin &: [-\pi/2, \pi/2] \rightarrow [-1, 1] \\
+		\cos &: [0, \pi] \rightarrow [-1, 1] \\
+		\tan &: (-\pi/2, \pi/2) \rightarrow \mathbb{R}
+	\end{align*}
+	とする．このとき．それぞれの逆三角関数を，
+	\begin{align*}
+		\sin^{-1} &: [-1, 1] \rightarrow [-\pi/2, \pi/2] \\
+		\cos^{-1} &: [-1, 1] \rightarrow [0, \pi] \\
+		\tan^{-1} &: \mathbb{R} \rightarrow (-\pi/2, \pi/2)
+	\end{align*}
+	と定義する．
+\end{definition}
+\begin{rem*}
+	逆三角関数$\sin^{-1}, \cos^{-1}, \tan^{-1}$のことを，$\arcsin, \arccos, \arctan$と表記することもある．これは，$x^{-1}$のような逆数としての$-1$との混乱を避けるためである．
+\end{rem*}
+\begin{example*}
+	$\sin(\pi/4) = 1/\sqrt{2}$より，$\sin^{-1}(1/\sqrt{2}) = \pi/4$である．
+\end{example*}
+\begin{example*}
+	指数関数・対数関数と同様に，逆関数の関係にあるため，$\sin(\sin^{-1}(x)) = x$である．
+\end{example*}
+
+逆三角関数のグラフを，図\ref{fig:invTriFunc}に示す．$f(x) = \sin^{-1}x$と$f(x) = \tan^{-1}x$は，単調増加であり，$f(x) = \cos^{-1}x$は，単調減少である．
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[t]{.5\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-1.0,
+		xmax=1.0,
+		ymin=-2.0,
+		ymax=2.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick={-1.57, 1.57},
+		yticklabels={$-\pi/2$,$\pi/2$},
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -1:1]{rad(asin(x))};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$\sin^{-1}x$のグラフ}
+	\end{subfigure}%
+	\begin{subfigure}[t]{.5\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-1.0,
+		xmax=1.0,
+		ymin=-0.5,
+		ymax=3.5,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick={1.57, 3.14},
+		yticklabels={$\pi/2$,$\pi$},
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -1:1]{rad(acos(x))};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$\cos^{-1}x$のグラフ}
+	\end{subfigure}\\%
+	\begin{subfigure}[t]{.5\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-4.0,
+		xmax=4.0,
+		ymin=-2.0,
+		ymax=2.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick={-1.57, 1.57},
+		yticklabels={$-\pi/2$,$\pi/2$},
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -4:4]{rad(atan(x))};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$\tan^{-1}x$のグラフ}
+	\end{subfigure}
+	\caption{逆三角関数のグラフ}
+	\label{fig:invTriFunc}
 \end{figure}

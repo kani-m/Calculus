@@ -14,8 +14,8 @@
 \usepackage{pxjahyper} % https://texwiki.texjp.org/?hyperref
 \usepackage[dvipdfmx]{graphicx} % For inserting figure
 \usepackage[labelformat=simple]{subcaption} % For caption of figures and tables
-%\renewcommand\thesubfigure{(\alph{subfigure})}
-%\renewcommand\thesubtable{(\alph{subtable})}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\renewcommand\thesubtable{(\alph{subtable})}
 \usepackage[usenames,dvipdfmx]{color} % For coloring
 \usepackage[shortlabels]{enumitem} % For useful enumerate and itemize environment
 \usepackage{comment} % For commenting multiline
@@ -27,6 +27,7 @@
 % % % Convenient for graph
 \usepackage{tikz-cd} % load package after color.sty & soul.sty
 \usepackage{pgfplots} %
+\usetikzlibrary{intersections, calc, angles}
 
 % % % Convenient for tables and emphasis
 \usepackage{tabularx} % For flexible table
