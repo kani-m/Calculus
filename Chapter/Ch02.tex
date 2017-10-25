@@ -1045,23 +1045,23 @@
 	\end{align*}
 	とする．このとき．それぞれの逆三角関数を，
 	\begin{align*}
-		\sin^{-1} &: [-1, 1] \rightarrow [-\pi/2, \pi/2] \\
-		\cos^{-1} &: [-1, 1] \rightarrow [0, \pi] \\
-		\tan^{-1} &: \mathbb{R} \rightarrow (-\pi/2, \pi/2)
+		\arcsin &: [-1, 1] \rightarrow [-\pi/2, \pi/2] \\
+		\arccos &: [-1, 1] \rightarrow [0, \pi] \\
+		\arctan &: \mathbb{R} \rightarrow (-\pi/2, \pi/2)
 	\end{align*}
 	と定義する．
 \end{definition}
 \begin{rem*}
-	逆三角関数$\sin^{-1}, \cos^{-1}, \tan^{-1}$のことを，$\arcsin, \arccos, \arctan$と表記することもある．これは，$x^{-1}$のような逆数としての$-1$との混乱を避けるためである．
+	逆三角関数$\arcsin, \arccos, \arctan$のことを，$\sin^{-1}, \cos^{-1}, \tan^{-1}$と表記することもある．この表記は，$x^{-1}$のような逆数としての$-1$との混乱を生む可能性があるため，この文書では使わない．
 \end{rem*}
 \begin{example*}
-	$\sin(\pi/4) = 1/\sqrt{2}$より，$\sin^{-1}(1/\sqrt{2}) = \pi/4$である．
+	$\sin(\pi/4) = 1/\sqrt{2}$より，$\arcsin(1/\sqrt{2}) = \pi/4$である．
 \end{example*}
 \begin{example*}
-	指数関数・対数関数と同様に，逆関数の関係にあるため，$\sin(\sin^{-1}(x)) = x$である．
+	指数関数・対数関数と同様に，逆関数の関係にあるため，$\sin(\arcsin(x)) = x$である．
 \end{example*}
 
-逆三角関数のグラフを，図\ref{fig:invTriFunc}に示す．$f(x) = \sin^{-1}x$と$f(x) = \tan^{-1}x$は，単調増加であり，$f(x) = \cos^{-1}x$は，単調減少である．
+逆三角関数のグラフを，図\ref{fig:invTriFunc}に示す．$f(x) = \arcsin x$と$f(x) = \arctan x$は，単調増加であり，$f(x) = \arccos x$は，単調減少である．
 
 \begin{figure}[!h]
 	\centering
@@ -1086,7 +1086,7 @@
 		\addplot[samples=200, domain = -1:1]{rad(asin(x))};
 		\end{axis}	
 		\end{tikzpicture}
-		\caption{$\sin^{-1}x$のグラフ}
+		\caption{$\arcsin x$のグラフ}
 	\end{subfigure}%
 	\begin{subfigure}[t]{.5\textwidth}
 		\begin{tikzpicture}
@@ -1109,7 +1109,7 @@
 		\addplot[samples=200, domain = -1:1]{rad(acos(x))};
 		\end{axis}	
 		\end{tikzpicture}
-		\caption{$\cos^{-1}x$のグラフ}
+		\caption{$\arccos x$のグラフ}
 	\end{subfigure}\\%
 	\begin{subfigure}[t]{.5\textwidth}
 		\begin{tikzpicture}
@@ -1132,7 +1132,7 @@
 		\addplot[samples=200, domain = -4:4]{rad(atan(x))};
 		\end{axis}	
 		\end{tikzpicture}
-		\caption{$\tan^{-1}x$のグラフ}
+		\caption{$\arctan x$のグラフ}
 	\end{subfigure}
 	\caption{逆三角関数のグラフ}
 	\label{fig:invTriFunc}

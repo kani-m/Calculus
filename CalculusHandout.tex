@@ -69,6 +69,12 @@
 % https://qiita.com/zr_tex8r/items/42466cbcbeb670a3a2dc
 % % %
 
+% チェックマークとバツマーク
+% http://laubit.blogspot.jp/2014/02/blog-post_6.html
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
 % % % AMS-Theorem Environment
 \theoremstyle{definition}
 \newtheorem*{theorem*}{定理}
@@ -161,6 +167,7 @@
 	% Chapterごとにファイルを分けて，それぞれをincludeする
 	\include{./Chapter/Ch01}
 	\include{./Chapter/Ch02}
+	\include{./Chapter/Ch03}
 	% % % End of Body
 
 	% % % Begin of Reference

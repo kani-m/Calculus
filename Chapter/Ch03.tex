@@ -1,0 +1,302 @@
+\chapter{微分}
+この章では，微分に関する諸概念を定義したあと，初等関数の微分について触れる．その後，ライプニッツの公式など，微分における重要な事例を観察し，初等関数のグラフの概形が書けるよう計算練習を行う．
+
+また，この章では断りがない限り，関数の始域と終域を，実数全体の集合$\mathbb{R}$の部分集合に限定して考えるものとする．
+
+\section{微分とは}
+第1章において，微分とは「微かな変化」を捉えるための数学である，ということに触れた．
+ここでいう「微かな変化」とは，関数$f$について，変数$x$の微小な変化に対する，関数の値$f(x)$の変化の具合のことである．
+とりわけ，注目したいことがらは，変数$x$の変化に対して，どのぐらい急激に，あるいは緩慢に，関数の値$f(x)$が変化しているか，であり，すなわち，それぞれの変化量の比をとった変化率を考えたいということになる．
+また，「``微かな''変化」と記述されているように，変数$x$の変化量は，できる限り小さく，最終的には0に限りなく近い微小な量としたい．
+しかしながら，変数$x$の変化量を0とすることは，分母が0になることと同義であり，数学的に許可されない演算である．
+
+そのため，ここで重要となってくるのは，関数$f$について，定義されていない点付近における挙動である．
+例えば，関数$f(x) = 1/x$や関数$g(x) = \tan x$について，$f$は点$x = 0$において，$g$は点$x = \pi/2$において，それぞれ定義されることがなかった．
+では，それらの定義されなかった点へと``近づいていった''場合，どのような挙動を示すのだろうか．
+この``近づいていった''場合の挙動を調べるのが，「極限を取る」という概念であり，数学的な操作である．
+
+「極限を取る」という操作が許された場合，関数$f$の変化率における，変数$x$の変化量を0へと近づけていくことが同時に許される．
+特に，ある点$x = a$における関数$f$の変化率について，変数$x$の変化量を0へと限りなく近づけた値は，微分係数と呼ばれ，その点における接線の傾きと等しくなる．
+この微分係数を求めることこそが，微分における第一の目的であり，そこから派生するように，関数が定義されている区間に対して微分係数を関係づけるような新しい写像（導関数）を見つける，導関数の性質を深く調べる，といった新しい興味・関心が生まれた．
+
+この節では，まず極限について定義し，その後，微分係数と導関数を定義する．また，極限に関連する概念として，関数における連続性という性質を定義する．連続かどうか，という性質は，微分にまつわる先人たちが残した定理において，非常に重要な前提となるため，ここで取り上げることにする．
+
+\begin{definition}[極限]
+	関数$f$について，ある実数$a$に向かって，$x$が減少するように近づいていったとき，
+	%実軸正の方向から負の方向へと近づけていったときに，
+	関数$f$の値がどのようになるか調べることを，\textbf{右極限}を取る，という．
+	同様に，ある実数$a$に向かって，$x$が増加するように近づいていったとき，
+	%実軸負の方向から正の方向へと近づけていったときに，
+	関数$f$の値がどのようになるか調べることを，\textbf{左極限}を取る，という．このとき，ある実数$b$になる場合，右（左）極限は，\textbf{収束}するといい，正の無限大$\infty$または負の無限大$-\infty$となる場合，右（左）極限は，\textbf{発散}するという．
+	右極限・左極限を取る操作のことを，それぞれ．
+	\begin{align*}
+		\lim\limits_{x \to a^+} f(x) && \lim\limits_{x \to a^-} f(x) &
+	\end{align*}
+	と表記する．収束・発散によらず，右（左）極限を取った結果を，単に右（左）極限と呼ぶことがある．
+	% 発散した場合は，右（左）極限と呼ばない？
+	一般に，右極限と左極限が一致する場合，これを\textbf{極限}といい，
+	\[
+		\lim\limits_{x \to a} f(x)
+	\]
+	と表記する．また，極限が収束する場合，その収束する値を，\textbf{極限値}あるいは単に極限と呼ぶことがある．
+\end{definition}
+% 関数$f(x) = 1/x$において，点$x = 0$での右極限は，正の無限大へと発散する．
+\begin{rem*}
+	右極限・左極限は，右側極限・左側極限と呼ばれることもある．また，数式での表現も複数あり，
+	\[
+		\lim\limits_{x \to a^+} f(x),\quad \lim\limits_{x \downarrow a},\quad \lim\limits_{x \searrow a},\quad \lim\limits_{x \to a+0}
+	\]
+	は，すべて右極限を表し，
+	\[
+	\lim\limits_{x \to a^-} f(x),\quad \lim\limits_{x \uparrow a},\quad \lim\limits_{x \nearrow a},\quad \lim\limits_{x \to a-0}
+	\]
+	は，すべて左極限を表す．
+	%どれも，実軸上における右側（左側）から近づいていることを示しており，また，変数の値として，上側（下側）から近づいていることを示している．
+\end{rem*}
+\newpage
+\begin{example*}
+	関数$f(x) = 1/x$について，
+	\begin{align*}
+		\lim\limits_{x \to 0^+} \frac{1}{x}&= \infty & \lim\limits_{x \to 0^-} \frac{1}{x}&= -\infty \\
+		\intertext{である．関数$g(x) = \tan x$について，}
+		\lim\limits_{x \to \pi/2^+} \tan x&= -\infty & \lim\limits_{x \to \pi/2^-} \tan x&= \infty \\
+		\intertext{である．関数$h(x) = |x|$について，}
+		\lim\limits_{x \to 0^+} |x|&= 0 & \lim\limits_{x \to 0^-} |x|&= 0 \\
+		\intertext{であるため，}
+		\lim\limits_{x \to 0} |x|&= 0 & &
+	\end{align*}
+	である．
+\end{example*}
+
+\begin{definition}[連続]
+	関数$f$について，ある実数$a$への極限が，関数の値$f(a)$と一致するとき，関数$f$は，点$x = a$で\textbf{連続}である，という．同様に，開区間$(a, b)$や閉区間$[a ,b]$における全ての点で連続であるとき，関数$f$は，区間$(a, b)$（または，$[a, b]$）で\textbf{連続}である，という．
+\end{definition}
+\begin{rem*}
+	極限と関数の値が一致しない場合，\textbf{不連続}であるという．区間においては，不連続な点が1つでも存在すれば，その区間において不連続である．
+\end{rem*}
+\begin{rem*}
+	関数$f$について，ある実数$a$への右極限が，関数の値$f(a)$と一致するとき，関数$f$は，点$x = a$で\textbf{右連続}である，という．同様に，ある実数$a$への左極限が，関数の値$f(a)$と一致するとき，関数$f$は，点$x = a$で\textbf{左連続}である，という．つまり，右連続かつ左連続であるとき，連続であるといえる．
+\end{rem*}
+\begin{example*}
+	次のような4つの関数を考える．それぞれのグラフを図示したものが，図\ref{fig:continuousFunc}である．
+	\begin{align*}
+		f_1(x) &= x & 
+		f_2(x) &=
+		\begin{cases}
+			x & (x \neq 0) \\
+			1 & (x = 0)
+		\end{cases} \\
+		f_3(x) &=
+		 \begin{cases}
+			x + 1 & (x \geq 0) \\
+			x - 1 & (x < 0)
+		\end{cases} &
+		f_4(x) &=
+		\begin{cases}
+			x + 1 & (x > 0) \\
+			x - 1 & (x \leq 0)
+		\end{cases} \\
+		f_5(x) &= 
+		\begin{cases}
+			x + 1 & (x > 0) \\
+			0 & (x = 0) \\
+			x - 1 & (x < 0)
+		\end{cases}		
+		&&
+	\end{align*}
+	点$x = 0$における，それぞれの関数の極限値を考える．
+	$f_1,f_2$について，点$x = 0$での極限は$0$である．
+	ここで，$f_1(0) = 0$，$f_2(0) = 1$であるため，$f_1$は$x = 0$で連続であるが．$f_2$は不連続である．
+	また，$f_3, f_4, f_5$について，点$x = 0$での右極限は$1$であり，左極限は$-1$である．ここで，$f_2(0) = 1$，$f_3(0) = -1$，$f_4(0) = 0$であるため，表\ref{table:continuous}に示すような連続性が得られる．
+	\begin{table}[!h]
+		\centering
+		\caption{関数の連続性}
+		\label{table:continuous}
+		\begin{tabular}{c|c|c|c}
+			& 右連続 & 左連続 & 連続 \\
+			\hline
+			$f_3$ & \cmark & \xmark & \xmark \\
+			$f_4$ & \xmark & \cmark & \xmark \\
+			$f_5$ & \xmark & \xmark & \xmark \\
+		\end{tabular}
+	\end{table}
+\end{example*}
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[t]{.4\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-2.0,
+		xmax=2.0,
+		ymin=-2.0,
+		ymax=2.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick distance=1,
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -2:2]{x};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$f_1(x)$のグラフ}
+	\end{subfigure}%
+	\begin{subfigure}[t]{.4\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-2.0,
+		xmax=2.0,
+		ymin=-2.0,
+		ymax=2.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick distance=1,
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = -2:2]{x};
+		\filldraw[fill=white, thick] (axis cs:0,0) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\fill[black] (axis cs:0,1) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$f_2(x)$のグラフ}
+	\end{subfigure}\\%
+	\begin{subfigure}[t]{.33\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west, font=\small},
+		ylabel=$y$,
+		ylabel style={font=\small},
+		xmin=-2.0,
+		xmax=2.0,
+		ymin=-2.0,
+		ymax=2.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick distance=1,
+		xticklabel style = {font=\tiny,yshift=0.5ex},
+		yticklabel style = {font=\tiny,xshift=0.5ex},
+		]
+		\node[below left, font=\small] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = 0:2]{x+1};
+		\addplot[samples=200, domain = -2:0]{x-1};
+		\fill[black] (axis cs:0,1) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\filldraw[fill=white, thick] (axis cs:0,-1) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$f_3(x)$のグラフ}
+	\end{subfigure}%
+	\begin{subfigure}[t]{.33\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west, font=\small},
+		ylabel=$y$,
+		ylabel style={font=\small},
+		xmin=-2.0,
+		xmax=2.0,
+		ymin=-2.0,
+		ymax=2.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick distance=1,
+		xticklabel style = {font=\tiny,yshift=0.5ex},
+		yticklabel style = {font=\tiny,xshift=0.5ex},
+		]
+		\node[below left, font=\small] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = 0:2]{x+1};
+		\addplot[samples=200, domain = -2:0]{x-1};
+		\filldraw[fill=white, thick] (axis cs:0,1) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\fill[black] (axis cs:0,-1) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$f_4(x)$のグラフ}
+	\end{subfigure}%
+	\begin{subfigure}[t]{.33\textwidth}
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west, font=\small},
+		ylabel=$y$,
+		ylabel style={font=\small},
+		xmin=-2.0,
+		xmax=2.0,
+		ymin=-2.0,
+		ymax=2.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick distance=1,
+		xticklabel style = {font=\tiny,yshift=0.5ex},
+		yticklabel style = {font=\tiny,xshift=0.5ex},		
+		]
+		\node[below left, font=\small] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = 0:2]{x+1};
+		\addplot[samples=200, domain = -2:0]{x-1};
+		\filldraw[fill=white, thick] (axis cs:0,1) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\fill[black] (axis cs:0,0) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\filldraw[fill=white, thick] (axis cs:0,-1) circle [x radius=1mm, y radius=1mm, rotate=0];
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$f_5(x)$のグラフ}
+	\end{subfigure}%
+	\caption{連続な関数と不連続な関数の例}
+	\label{fig:continuousFunc}
+\end{figure}
+
+\begin{definition}[平均変化率]
+	関数$f$について，ある点$x = a$から$\Delta x$だけ離れた点$x = a + \Delta x$との間における，関数の値の差の比のことを，\textbf{平均変化率}といい，
+	\[
+		\frac{\Delta y}{\Delta x} = \frac{f(a+\Delta x) - f(a)}{(a+\Delta x) - a} = \frac{f(a+\Delta x) - f(a)}{\Delta x}
+	\]
+	と表記する．
+\end{definition}
+\begin{definition}[微分係数]
+	関数$f$について，ある点$x = a$における平均変化率$\Delta y / \Delta x$を考えたとき，$\Delta x$を$0$に向かわせるような極限を取ったものを，点$x = a$における\textbf{微分係数}と呼ぶ．
+\end{definition}
+\begin{definition}[微分可能]
+	関数$f$について，ある点$x = a$における微分係数が存在するとき，関数$f$は，点$x = a$で\textbf{微分可能}である，という．同様に，開区間$(a, b)$や閉区間$[a ,b]$における全ての点で微分可能であるとき，関数$f$は，区間$(a, b)$（または，$[a, b]$）で\textbf{微分可能}である，という．
+\end{definition}
+\begin{theorem}
+	関数$f$が微分可能であるとき，関数$f$は連続である．
+\end{theorem}
+
+\begin{definition}[導関数]
+	区間$(a,b)$において\footnotemark[1]微分可能である関数$f$について，その区間上の実数$c$と微分係数$f'(c)$の関係$c \mapsto f'(c)$は，関数の定義を満たす．この新しく作られた関数は，もとの関数$f$より導かれる関数であるため，\textbf{導関数}と呼ばれる．また，導関数を作る際に，微分係数が用いられるため，はじめて導関数を考える場合は，
+	\[
+		f'(x) = \lim\limits_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
+	\]
+	を計算することが多い．
+\end{definition}
+\footnotetext[1]{閉区間$[a,b]$について，導関数を考えたければ，開区間の端点である$a, b$について，それぞれ微分可能かどうかを確かめれば十分である．もし，端点が微分不可能であれば，元の関数は，開区間においてのみ導関数が存在することになる．}
+\begin{rem*}
+	関数$f$から，導関数$f'$を求めることを，\textbf{微分}する，という．とりわけ，元となる関数の変数を強調する場合には，「関数$f$を変数$x$について微分する」「関数$f$を変数$x$に関して微分する」などという．
+	また，導関数$f'$のことを，単に関数$f$の\textbf{微分}ということも多く，動詞としての微分と名詞としての微分に，注意する必要がある．
+	特に，名詞としての微分については，$f'$以外に，
+	\[
+		\frac{\dif f}{\dif x},\quad \frac{\dif}{\dif x}f,\quad \dot{f},\quad Df
+	\]
+	など様々な表記法が存在するため，それぞれが微分を表すということを知っておく必要がある．
+	この文書中では，「（変数によらず）関数$f$の微分である」「関数$f$から作られた導関数である」ということを強調するとき$f'$を，「関数$f$を変数$x$について微分している」ということを強調するとき$\dif f/\dif x$や$(\dif/\dif x) f$を使用するものとする．
+\end{rem*}
+
+\begin{definition}[$C^n$級]
+	関数$f$が，$n$回微分可能で，その$n$階導関数が連続であるとき，関数$f$は$C^n$級である，という．この関数の分類について，$C^0 \supset C^1 \cdots C^\infty$なる包含関係が成り立つ．
+\end{definition}
+
+\section{代数関数の微分}
