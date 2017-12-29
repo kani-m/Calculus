@@ -27,7 +27,11 @@
 	関数$f$の値がどのようになるか調べることを，\textbf{右極限}を取る，という．
 	同様に，ある実数$a$に向かって，$x$が増加するように近づいていったとき，
 	%実軸負の方向から正の方向へと近づけていったときに，
-	関数$f$の値がどのようになるか調べることを，\textbf{左極限}を取る，という．このとき，ある実数$b$になる場合，右（左）極限は，\textbf{収束}するといい，正の無限大$\infty$または負の無限大$-\infty$となる場合，右（左）極限は，\textbf{発散}するという．
+	関数$f$の値がどのようになるか調べることを，\textbf{左極限}を取る，という．
+	
+	このとき，ある実数$b$になる場合，右（左）極限は，\textbf{収束}する，といい，収束しない場合，右（左）極限は，\textbf{発散}する，という．
+	特に，発散する場合において，関数$f$の値が正のまま，どんな正の数よりも絶対値が大きくなる場合，正の無限大$\infty$に\textbf{発散}する，といい，$f$の値が負のまま，どんな負の数よりも絶対値が大きくなる場合，負の無限大$-\infty$に\textbf{発散}する，という．また，$\infty$にも$-\infty$にも発散しない場合，\textbf{振動}する，という．
+	
 	右極限・左極限を取る操作のことを，それぞれ．
 	\begin{align*}
 		\lim\limits_{x \to a^+} f(x) && \lim\limits_{x \to a^-} f(x) &
@@ -38,9 +42,11 @@
 	\[
 		\lim\limits_{x \to a} f(x)
 	\]
-	と表記する．また，極限が収束する場合，その収束する値を，\textbf{極限値}あるいは単に極限と呼ぶことがある．
+	と表記する\footnotemark[1]．また，極限が収束する場合，その収束する値を，\textbf{極限値}あるいは単に極限と呼ぶことがある\footnotemark[1]．
 \end{definition}
-% 関数$f(x) = 1/x$において，点$x = 0$での右極限は，正の無限大へと発散する．
+\footnotetext[1]{この定義から分かることは，``極限''の存在と，``極限値''の存在（極限の収束・発散，言い換えれば，極限が有限の値であるか，無限大であるか）は，別の話であるということである．極限に由来する定義・定理が出てきた場合（e.g. 微分係数），どちらの存在を条件としているのか，``極限''という用語を注意深く観察し，文脈から判断しなければならない．これは，「極限を取る」という操作の結果と，極限値に対して，``極限''という用語を割り当てたことに由来する．}
+% 負の数が"小さい"とは？->絶対値が小さいのか，負の無限大方向にあるのか
+\newpage
 \begin{rem*}
 	右極限・左極限は，右側極限・左側極限と呼ばれることもある．また，数式での表現も複数あり，
 	\[
@@ -53,6 +59,20 @@
 	は，すべて左極限を表す．
 	%どれも，実軸上における右側（左側）から近づいていることを示しており，また，変数の値として，上側（下側）から近づいていることを示している．
 \end{rem*}
+\begin{rem*}
+	また，極限を考える場合，関数の振る舞いとして，$x$の絶対値が十分に大きくなった場合，どうなるのか知りたいという場面がある．
+	そのような振る舞いを記述するため，$x$の符号を正のまま，どんな正の数よりも絶対値が大きくなるように増加させていったとき，関数$f$の値がどのようになるか調べることを，（正の無限大へ近づけていったときの）極限を取る，という．
+	また，$x$の符号を負のまま，どんな負の数よりも絶対値が大きくなるように減少させていったとき，関数$f$の値がどのようになるか調べることを，（負の無限大へ近づけていったときの）極限を取る，という．
+	
+	正の無限大・負の無限大への極限を取る操作のことを，それぞれ
+	\begin{align*}
+		\lim\limits_{x \to \infty} f(x) && \lim\limits_{x \to -\infty} f(x) &
+	\end{align*}
+	と表記し，その結果を，\textbf{極限}と呼ぶ．収束・発散の考え方は，ある実数に向かって$x$を近づけていったときの極限と同様である．
+\end{rem*}
+\begin{rem*}
+	極限$\displaystyle \lim\limits_{x \to a} f(x)$が，ある実数$b$に収束する場合，$x \to a$のとき$f(x) \to b$である，ということもある．特に，正の無限大に発散する場合は，$x \to a$のとき$f(x) \to \infty$である，といい，こちらの表記法で書かれる場合も多い．また，正の無限大への極限を考えた場合に，ある実数$b$に収束することを，$x \to \infty$のとき$f(x) \to b$である，ということもできる．負の無限大に発散する場合，負の無限大への極限を考えた場合も同様である．
+\end{rem*}
 \newpage
 \begin{example*}
 	関数$f(x) = 1/x$について，
@@ -61,16 +81,71 @@
 		\intertext{である．関数$g(x) = \tan x$について，}
 		\lim\limits_{x \to \pi/2^+} \tan x&= -\infty & \lim\limits_{x \to \pi/2^-} \tan x&= \infty \\
 		\intertext{である．関数$h(x) = |x|$について，}
-		\lim\limits_{x \to 0^+} |x|&= 0 & \lim\limits_{x \to 0^-} |x|&= 0 \\
+		\lim\limits_{x \to 0^+} |x|&= \lim\limits_{x \to 0^+} x & \lim\limits_{x \to 0^-} |x|&= \lim\limits_{x \to 0^-} (-x) \\
+		&= 0 & &= 0 \\
 		\intertext{であるため，}
 		\lim\limits_{x \to 0} |x|&= 0 & &
 	\end{align*}
 	である．
 \end{example*}
-
+\begin{example*}
+	指数関数$f(x) = a^x$について，$a > 1$のとき，
+	\begin{align*}
+	\lim\limits_{x \to \infty} a^x&= \infty & \lim\limits_{x \to -\infty} a^x&= 0 \\
+	\intertext{であり，$0 < a < 1$のとき，}
+	\lim\limits_{x \to \infty} a^x&= 0 & \lim\limits_{x \to -\infty} a^x&= \infty \\
+	\intertext{である．対数関数$g(x) = \log_a x$について，$a > 1$のとき，}
+	\lim\limits_{x \to \infty} \log_a x&= \infty & \lim\limits_{x \to 0^+} \log_a x&= -\infty \\
+	\intertext{であり，$0 < a < 1$のとき，}
+	\lim\limits_{x \to \infty} \log_a x&= -\infty & \lim\limits_{x \to 0^+} \log_a x&= \infty
+	\end{align*}
+	である．三角関数について，正の無限大・負の無限大への極限を取る操作を行った場合，極限値は存在しない（振動する）．
+\end{example*}
+\begin{theorem}[極限の性質]
+	$\displaystyle \alpha = \lim\limits_{x \to a}f(x)$，$\displaystyle \beta = \lim\limits_{x \to a}g(x)$，実数$k$が与えられているとき，以下の性質を満たす．
+	\begin{enumerate}[itemsep=2ex, label*=\arabic*.]
+		\item $\displaystyle \lim\limits_{x \to a}kf(x) = k\alpha$
+		\item $\displaystyle \lim\limits_{x \to a}f(x) \pm g(x) = \alpha \pm \beta$
+		\item $\displaystyle \lim\limits_{x \to a}f(x)g(x) = \alpha\beta$
+		\item $\displaystyle \lim\limits_{x \to a}\frac{f(x)}{g(x)} = \frac{\alpha}{\beta}\quad(\beta \neq 0)$
+	\end{enumerate}
+\end{theorem}
+\begin{rem*}
+	特に，1番目と2番目の性質は，\textbf{線型性}と呼ばれ，数学においてたびたび登場する重要な概念である．
+\end{rem*}
+\begin{example*}
+% 例を加える	
+\end{example*}
+\newpage
+\begin{theorem}[極限の性質]
+	$l < a < u$とし，点$x = a$を除いた区間$(l, u)$において定義された関数$f, g, h$が与えられているとき，以下の性質を満たす．
+	ここで，$\displaystyle \alpha = \lim\limits_{x \to a}f(x)$，$\displaystyle \beta = \lim\limits_{x \to a}g(x)$とする．
+	\begin{enumerate}[resume, itemsep=2ex, label*=\arabic*.]
+		\item $\displaystyle (l, u)\setminus\set{a}$において，$\displaystyle f(x) \leq g(x)$を満たすならば，$\displaystyle \alpha \leq \beta$
+		\item $\displaystyle (l, u)\setminus\set{a}$において，$\displaystyle f(x) \leq h(x) \leq g(x)$を満たし，$\displaystyle \alpha = \beta$ならば，$\displaystyle \lim\limits_{x \to a} h(x) = \alpha$
+	\end{enumerate}
+\end{theorem}
+\begin{rem*}
+	6番目の性質を，\textbf{はさみうちの原理}と呼ぶ．
+\end{rem*}
+\begin{example*}
+	極限$\displaystyle \lim\limits_{x \to 0}x\sin\frac{1}{x}$を調べる．$\displaystyle -1 \leq \sin\frac{1}{x} \leq 1$より，
+	\begin{align*}
+		0 \leq \left|\sin\frac{1}{x}\right| &\leq 1 \\
+		0 \leq \left|x\right|\left|\sin\frac{1}{x}\right| &\leq \left|x\right| \\
+		0 \leq \left|x\sin\frac{1}{x}\right| &\leq \left|x\right| \\
+		\intertext{となる．ここで，$\displaystyle \lim\limits_{x \to 0} \left|x\right| = 0$であるため，はさみうちの原理より，}
+		\lim\limits_{x \to 0} \left|x\sin\frac{1}{x}\right| &= 0 \\
+		\intertext{となる．よって，}
+		\lim\limits_{x \to 0} x\sin\frac{1}{x} &= 0
+	\end{align*}
+	である．
+\end{example*}
+\newpage
 \begin{definition}[連続]
 	関数$f$について，ある実数$a$への極限が，関数の値$f(a)$と一致するとき，関数$f$は，点$x = a$で\textbf{連続}である，という．同様に，開区間$(a, b)$や閉区間$[a ,b]$における全ての点で連続であるとき，関数$f$は，区間$(a, b)$（または，$[a, b]$）で\textbf{連続}である，という．
 \end{definition}
+% % % 連続な関数の，和・差・積・商・合成も，合成関数である．
 \begin{rem*}
 	極限と関数の値が一致しない場合，\textbf{不連続}であるという．区間においては，不連続な点が1つでも存在すれば，その区間において不連続である．
 \end{rem*}
@@ -259,19 +334,156 @@
 	\label{fig:continuousFunc}
 \end{figure}
 
+\afterpage{\clearpage}
+\newpage
 \begin{definition}[平均変化率]
 	関数$f$について，ある点$x = a$から$\Delta x$だけ離れた点$x = a + \Delta x$との間における，関数の値の差の比のことを，\textbf{平均変化率}といい，
 	\[
 		\frac{\Delta y}{\Delta x} = \frac{f(a+\Delta x) - f(a)}{(a+\Delta x) - a} = \frac{f(a+\Delta x) - f(a)}{\Delta x}
 	\]
-	と表記する．
+	と表記する．$\Delta x$，$\Delta y$をそれぞれ$x$の\textbf{増分}，$y$の増分と呼ぶ．
 \end{definition}
+\begin{example*}
+	関数$f(x) = x^2$について，点$x = 1$における平均変化率を，増分$\Delta x$をパラメータにしてまとめたものが，表\ref{table:averageRate}である．
+	\begin{table}[!h]
+		\centering
+		\caption{$f(x) = x^2$について，$x=1$における平均変化率の表}
+		\label{table:averageRate}
+		\begin{tabular}{c|cccc}
+			$\Delta x$ & 0.5 & 1 & 2 & 3 \\
+			\hline
+			$\displaystyle \frac{\Delta y}{\Delta x}$ & 2.5 & 3 & 4 & 5 \\
+		\end{tabular}
+	\end{table}
+
+	また，平均変化率は，点$\left(x, f(x)\right)$と点$\left(x+\Delta x, f\left(x+\Delta x\right)\right)$との間を通る直線の傾きを表している指標である．
+	実際に，点$x = 1$と増分$\Delta x = 1, 2$を例に，2点間の直線を加えたものが，図\ref{fig:averageRate}である．
+	\begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+			width=0.8\textwidth,
+			axis lines=center,
+			xlabel=$x$,
+			xlabel style={at=(current axis.right of origin), anchor=west},
+			ylabel=$y$,
+			xmin=-1.0,
+			xmax=4.0,
+			ymin=-1.0,
+			ymax=10.0,
+			enlarge y limits={rel=0.10},
+			xtick distance=1,
+			ytick distance=1,
+			]
+			\node[below left] at (axis cs:0,0) {O};
+			\addplot[samples=200, domain = -1:4]{x^2};
+			\addplot[samples=200, domain = -1:4]{4*x-3};
+			\addplot[samples=200, domain = -1:4, dashed]{3*x-2};
+			\end{axis}	
+		\end{tikzpicture}
+		\caption{$f(x) = x^2$における平均変化率に関するグラフ}
+		\label{fig:averageRate}
+	\end{figure}
+\end{example*}
+\afterpage{\clearpage}
+\newpage
 \begin{definition}[微分係数]
-	関数$f$について，ある点$x = a$における平均変化率$\Delta y / \Delta x$を考えたとき，$\Delta x$を$0$に向かわせるような極限を取ったものを，点$x = a$における\textbf{微分係数}と呼ぶ．
+	関数$f$について，ある点$x = a$における平均変化率$\Delta y / \Delta x$を考える．この平均変化率について，$\Delta x$を$0$へと向かわせる極限を取ったとき，極限が収束するならば，その極限値を，点$x = a$における\textbf{微分係数}と呼び，$f'(a)$と表記する．
 \end{definition}
 \begin{definition}[微分可能]
 	関数$f$について，ある点$x = a$における微分係数が存在するとき，関数$f$は，点$x = a$で\textbf{微分可能}である，という．同様に，開区間$(a, b)$や閉区間$[a ,b]$における全ての点で微分可能であるとき，関数$f$は，区間$(a, b)$（または，$[a, b]$）で\textbf{微分可能}である，という．
 \end{definition}
+\begin{rem*}
+	微分係数は，平均変化率における極限を調べ，（もしあれば）その極限値で定義される．そのため，右極限・左極限を調べることによって，それぞれ\textbf{右微分係数}$f'_{+}(a)$と\textbf{左微分係数}$f'_{-}(a)$を定義することができる．また，\textbf{右微分可能}・\textbf{左微分可能}を，それぞれ右微分係数・左微分係数を用いて定義することができる．
+\end{rem*}
+\begin{rem*}
+	「関数$f$は，点$x = a$において微分可能か？」という問いがあったとき，点$x = a$における平均変化率の$\Delta x$を$0$へと近づけるような極限
+	\[
+		\lim\limits_{\Delta x \to 0}\frac{f(a+\Delta x) - f(a)}{\Delta x}
+	\]
+	を考え，それが収束するかどうかを調べればよい．もし，収束するならば微分可能であり，収束しない（極限値が存在しない，極限が発散する）のであれば微分不可能であるということがわかる．
+\end{rem*}
+\begin{rem*}
+	定性的な話をすれば，ほとんどの場合，微分可能な関数とは，滑らかなグラフが描画されるような関数であり，微分不可能な関数とは，尖ったグラフが描画されるような関数である．
+	これは，一筆書きできるような，線で繋がったグラフを持つような関数と，連続な関数との関連付けと類似したものである．
+\end{rem*}
+\newpage
+\begin{example*}
+	関数$f(x) = x$について，点$x = 0$における微分係数を調べると，
+	\begin{align*}
+		f'(0) &= \lim\limits_{\Delta x \to 0}\frac{f(0+\Delta x) - f(0)}{\Delta x} \\
+		&= \lim\limits_{\Delta x \to 0}\frac{f(\Delta x) - 0}{\Delta x} \\
+		&= \lim\limits_{\Delta x \to 0}\frac{\Delta x}{\Delta x} \\
+		&= \lim\limits_{\Delta x \to 0}1 \\
+		&= 1
+	\end{align*}
+	であるため，関数$f(x)$は，$x = 0$において微分可能である．
+	
+	関数$g(x) = |x|$について，点$x = 0$における微分係数を調べる．
+	\begin{align*}
+		f'(0) &= \lim\limits_{\Delta x \to 0}\frac{f(0+\Delta x) - f(0)}{\Delta x} &&\\
+		&= \lim\limits_{\Delta x \to 0}\frac{f(\Delta x) - |0|}{\Delta x} &&\\
+		&= \lim\limits_{\Delta x \to 0}\frac{|\Delta x|}{\Delta x} &&\\
+		\intertext{ここで，右極限と左極限をそれぞれ調べると，}
+		\lim\limits_{\Delta x \to 0^+}\frac{|\Delta x|}{\Delta x} &= \lim\limits_{\Delta x \to 0^+}\frac{\Delta x}{\Delta x} &
+		\lim\limits_{\Delta x \to 0^-}\frac{|\Delta x|}{\Delta x} &= \lim\limits_{\Delta x \to 0^-}\frac{-\Delta x}{\Delta x} \\
+		&= \lim\limits_{\Delta x \to 0^+} 1 & &= \lim\limits_{\Delta x \to 0^-} (-1) \\
+		&= 1 & &= -1
+	\end{align*}
+	となり，結果が一致しないため，極限値が存在しない．つまり，微分係数が存在しないため，関数$g(x)$は，$x = 0$において微分不可能である．
+\end{example*}
+\newpage
+\begin{example*}
+	関数$f(x)$を
+	\[
+	f(x) =
+	\begin{cases}
+	\sqrt{x} & (x \geq 0) \\
+	-\sqrt{-x} & (x < 0)
+	\end{cases}
+	\]
+	と定義する．このとき，この関数のグラフは図\ref{fig:nondifferentiable}のようになり，点$x = 0$において連続である．そこで，点$x = 0$における微分可能性を調べる．
+	
+	微分係数の定義より，
+	\begin{align*}
+		f'(0) &= \lim\limits_{\Delta x \to 0}\frac{f(0+\Delta x) - f(0)}{\Delta x} &&\\
+		&= \lim\limits_{\Delta x \to 0}\frac{f(\Delta x)}{\Delta x} &&\\
+		\intertext{ここで，右極限と左極限をそれぞれ調べると，}
+		\lim\limits_{\Delta x \to 0^+}\frac{\sqrt{\Delta x}}{\Delta x} &= \lim\limits_{\Delta x \to 0^+}\frac{\Delta x}{\Delta x\sqrt{\Delta x}} &
+		\lim\limits_{\Delta x \to 0^-}\frac{-\sqrt{-\Delta x}}{\Delta x} &= \lim\limits_{\Delta x \to 0^-}\frac{\Delta x}{\Delta x\sqrt{-\Delta x}} \\
+		&= \lim\limits_{\Delta x \to 0^+}\frac{1}{\sqrt{\Delta x}} & &= \lim\limits_{\Delta x \to 0^-}\frac{1}{\sqrt{-\Delta x}} \\
+		&= \infty & &= \infty
+	\end{align*}
+	となり，結果が一致するため，極限$\displaystyle \lim\limits_{\Delta x \to 0}\frac{f(\Delta x)}{\Delta x}$は存在する．
+	しかし，極限を取った結果，正の無限大へと発散することが分かったため，極限値は存在しない．つまり，微分係数が存在しないため，関数$f(x)$は，$x = 0$において微分不可能である．
+	\begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}
+		\begin{axis}[
+		width=0.5\textwidth,
+		axis lines=center,
+		xlabel=$x$,
+		xlabel style={at=(current axis.right of origin), anchor=west},
+		ylabel=$y$,
+		xmin=-1.0,
+		xmax=1.0,
+		ymin=-1.0,
+		ymax=1.0,
+		enlarge y limits={rel=0.10},
+		xtick distance=1,
+		ytick distance=1,
+		]
+		\node[below left] at (axis cs:0,0) {O};
+		\addplot[samples=200, domain = 0:1]{sqrt(x)};
+		\addplot[samples=200, domain = -1:0]{-sqrt(-x)};
+		\end{axis}	
+		\end{tikzpicture}
+		\caption{$f(x)$のグラフ}
+		\label{fig:nondifferentiable}
+	\end{figure}
+\end{example*}
+\afterpage{\clearpage}
+\newpage
 \begin{theorem}
 	関数$f$が微分可能であるとき，関数$f$は連続である．
 \end{theorem}
@@ -283,7 +495,7 @@
 	\]
 	を計算することが多い．
 \end{definition}
-\footnotetext[1]{閉区間$[a,b]$について，導関数を考えたければ，開区間の端点である$a, b$について，それぞれ微分可能かどうかを確かめれば十分である．もし，端点が微分不可能であれば，元の関数は，開区間においてのみ導関数が存在することになる．}
+\footnotetext[1]{閉区間$[a,b]$について，導関数を考えたければ，開区間の端点である$a, b$について，点$a$が右微分可能か，点$b$が左微分可能かどうかを確かめれば十分である．もし，端点が右（左）微分不可能であれば，元の関数は，開区間においてのみ導関数が存在することになる．}
 \begin{rem*}
 	関数$f$から，導関数$f'$を求めることを，\textbf{微分}する，という．とりわけ，元となる関数の変数を強調する場合には，「関数$f$を変数$x$について微分する」「関数$f$を変数$x$に関して微分する」などという．
 	また，導関数$f'$のことを，単に関数$f$の\textbf{微分}ということも多く，動詞としての微分と名詞としての微分に，注意する必要がある．
@@ -293,10 +505,124 @@
 	\]
 	など様々な表記法が存在するため，それぞれが微分を表すということを知っておく必要がある．
 	この文書中では，「（変数によらず）関数$f$の微分である」「関数$f$から作られた導関数である」ということを強調するとき$f'$を，「関数$f$を変数$x$について微分している」ということを強調するとき$\dif f/\dif x$や$(\dif/\dif x) f$を使用するものとする．
+	
+	他にも，関数$y = f(x)$において，導関数の元となる微分係数は，ある点における平均変化率$\Delta y / \Delta x$の極限であるということから，導関数を変化量の比の極限と位置づけ，
+	\[
+		\frac{\dif y}{\dif x},\quad y'
+	\]
+	などと表記することもある．
 \end{rem*}
+% % % $f$は，関数としての意味合いが強くて，$y$は，変化量（微小量）としての意味合いが強い？
+% % % 微分形式とは？
 
-\begin{definition}[$C^n$級]
-	関数$f$が，$n$回微分可能で，その$n$階導関数が連続であるとき，関数$f$は$C^n$級である，という．この関数の分類について，$C^0 \supset C^1 \cdots C^\infty$なる包含関係が成り立つ．
+\newpage
+\begin{definition}[合成関数]
+	関数$f, g$が与えられているとき，$\im f \subseteq \dom g$が成り立つならば，$\dom f$の要素に対して，$\im g$の要素を関係づけるような新しい関数を作ることができる．この新しく作られた関数を，\textbf{合成関数}と呼び，$g \circ f$と表記する．合成関数の変数を明示する場合は，$g(f(x))$や$(g \circ f)(x)$と表記される．
+\end{definition}
+\begin{example*}
+	関数$f(x) = x^2+3$，$g(t) = \sin t$について，
+	\begin{align*}
+		g(f(x)) &= \sin(x^2+3) \\
+		f(g(t)) &= \sin^2t + 3
+	\end{align*}
+	である．$g(f(x))$においては，$g(t)$の変数$t$を$f(x)$で置き換え，$f(g(t))$においては，$f(x)$の変数$x$を$g(t)$で置き換えた．
+\end{example*}
+
+\begin{theorem}[微分の性質]
+	\label{thm:differentialProperty}%
+	区間$(a,b)$において微分可能である関数$f, g$と実数$k$が与えられているとき，以下の性質を満たす．
+	\begin{enumerate}
+		\item $(kf)' = kf'$
+		\item $(f \pm g)' = f' \pm g'$
+		\item $(fg)' = f'g + fg'$
+		\item $(g\circ f)' = (g'\circ f)f'$
+	\end{enumerate}
+\end{theorem}
+\begin{rem*}
+	変数を明示して，定理\ref{thm:differentialProperty}を書き直すと，以下のようになる．ここで，変数は$x$とする．
+	\begin{enumerate}[itemsep=2ex, label*=\arabic*.]
+		\item $\displaystyle \frac{\dif}{\dif x}(kf) = k\frac{\dif f}{\dif x}$
+		\item $\displaystyle \frac{\dif}{\dif x}(f \pm g) = \frac{\dif f}{\dif x} \pm \frac{\dif g}{\dif x}$
+		\item $\displaystyle \frac{\dif}{\dif x}(fg) = \frac{\dif f}{\dif x}g + f\frac{\dif g}{\dif x}$
+		\item $\displaystyle \frac{\dif}{\dif x}(g\circ f) = (\frac{\dif g}{\dif x}\circ f)\frac{\dif f}{\dif x}$
+	\end{enumerate}
+	特に，4番目の合成関数の微分に関する性質は，$y = g(x)$，$x = f(t)$とおき，変化量の比の極限とみなすことにより，
+	\[
+		\frac{\dif y}{\dif t} = \frac{\dif y}{\dif x}\frac{\dif x}{\dif t}
+	\]
+	と表すことができる\footnotemark[2]．また，実用上$h(x) = g\left(f(x)\right)$とおき，
+	\[
+		h'(x) = \left\{g\left(f(x)\right)\right\}' = g'\left(f(x)\right)f'(x)
+	\]
+	と表記することが多い．
+\end{rem*}
+\footnotetext[2]{$\dif y/\dif t$は，$t$が微小に変化したとき$y$がどれだけ変化するかの比であり，それは，$t$の変化量と$x$の変化量の比の極限である$\dif x/\dif t$と，$x$の変化量と$y$の変化量の比の極限である$\dif y/\dif x$との積に等しいということを主張している．}
+
+\begin{definition}[$\mathrm{C}^n$級]
+	関数$f$が，$n$回微分可能で，その$n$階導関数が連続であるとき，関数$f$は$\mathrm{C}^n$級である，という．この関数の分類について，$\mathrm{C}^0 \supset \mathrm{C}^1 \cdots \mathrm{C}^\infty$なる包含関係が成り立つ．
 \end{definition}
 
-\section{代数関数の微分}
+\newpage
+\section{初等関数の微分}
+この節では，第\ref{chap:function}章で学んだ初等関数について，導関数を求めていく．
+\subsection{代数関数の微分I}
+\begin{theorem}
+	$n$を整数とする．このとき，$f(x) = x^n$とすると，その導関数は，
+	\[
+		f'(x) = nx^{n-1}
+	\]
+	となる．
+\end{theorem}
+\begin{Proof}
+	まず，$n$を自然数に限定する．
+	\begin{enumerate}[(1)]
+		\item $n = 1$のとき，$f(x) = x$として，その導関数は，
+		\begin{align*}
+			f'(x) = (x)' &= \lim\limits_{\Delta x \to 0}\frac{f\left(x+\Delta x\right) -f(x)}{\Delta x} \\
+			&= \lim\limits_{\Delta x \to 0}\frac{\left(x+\Delta x\right) -x}{\Delta x} \\
+			&= \lim\limits_{\Delta x \to 0}\frac{\Delta x}{\Delta x} \\
+			&= \lim\limits_{\Delta x \to 0} 1 \\
+			&= 1 \\
+			&= 1 \cdot x^0 = 1\cdot x^{1-1}
+		\end{align*}
+		となるため，成り立つ．
+		\item $n = k$のとき，$f(x) = x^k$として，
+		\[
+			f'(x) = \left(x^k\right)' = kx^{k-1}
+		\]
+		が成り立つと仮定する．
+		
+		$n = k+1$のとき，$f(x) = x^{k+1}$として，その導関数は，
+		\begin{align*}
+			f'(x) &= \left(x^{k+1}\right)' \\
+			&= \left(x^k\cdot x\right)' \\
+			&= \left(x^k\right)'\cdot x + x^k \cdot \left(x\right)' \\
+			&= kx^{k-1}\cdot x + x^k \cdot 1 \\
+			&= kx^k + x^k \\
+			&= (k+1)x^k \\
+			&= (k+1)x^{(k+1)-1}
+		\end{align*}
+		となるため，成り立つ．
+	\end{enumerate}
+	よって，数学的帰納法より，全ての自然数$n$について，$\left(x^n\right)' = nx^{n-1}$が成り立つ。
+	
+	次に，合成関数の微分の性質を用いて，自然数の結果を負の整数へと拡張する．
+	ここでは，$n$を自然数，$m$を負の整数，$f(x) = x^n$，$g(x)=1/x$とする．
+	$m = -n$とおくと，
+	\[
+		h(x) = x^m = x^{-n} = \frac{1}{x^n} = g\left(f(x)\right)
+	\]
+	のような合成関数を考えることができる．このとき，その導関数は，
+	\begin{align*}
+		(x^m)' = h'(x) &= g'\left(f(x)\right)\cdot f'(x) \\
+		&= -\frac{1}{\left(x^n\right)^2}\cdot nx^{n-1} \\
+		&= -\frac{nx^{n-1}}{x^{2n}} \\
+		&= -nx^{n-1}x^{-2n} \\
+		&= -nx^{-n-1} \\
+		&= mx^{m-1}
+	\end{align*}
+	となるため，負の整数においても成り立つ．
+	また，$n = 0$のとき，$f(x) = x^0 = 1$とすると，その導関数は$0$となるため，成り立つ．
+	
+	以上より，全ての整数$n$について，$\left(x^n\right)' = nx^{n-1}$が成り立つことが示された．$\qed$
+\end{Proof}

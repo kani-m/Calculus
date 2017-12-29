@@ -2,12 +2,8 @@
 % http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/book.html
 % http://ichiro-maruta.blogspot.jp/2013/03/latex.html
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[12pt, a4j, openany, uplatex, dvipdfmx]{jsarticle}
-
-% % %
-% 使用の検討中
-% exsheets.sty
-% http://konoyonohana.blog.fc2.com/blog-entry-78.html
+% http://www-math.mit.edu/~psh/exam/examdoc.pdf
+\documentclass[12pt, a4j, openany, uplatex, dvipdfmx]{exam}
 
 % % % Paper size
 %\usepackage[top=1truein, bottom=1truein, left=1.5truein, right=1truein]{geometry} % 用紙サイズの設定のため
@@ -38,13 +34,13 @@
 %\usepackage{colortbl} % For coloring table
 \usepackage{longtable} % For long table across multiple pages
 %\usepackage[normalem]{ulem} % For flexible underline etc.
-%\usepackage{ascmac} % For framing multiline -> bxascmac に変更したほうがよい?
+\usepackage{ascmac} % For framing multiline -> bxascmac に変更したほうがよい?
 
 % % % 文書の見た目のためのパッケージ
 \usepackage{setspace} % For single space or double space
 \usepackage{afterpage} % For inseting newpage 
 \usepackage{datetime} % For date style of title
-\usepackage{fancyhdr} % For header and footer
+%\usepackage{fancyhdr} % For header and footer
 % % tocloft を include すると目次の番号と文章が被る?
 %\usepackage{tocloft} % 図目次、表目次の見た目を変えるため
 \usepackage{pxrubrica} % For writing ruby
@@ -81,10 +77,10 @@
 % 試験的に導入（定義を枠で囲むため）．2005年だからパッケージとしては古いか？（もっといいのがあるかも）
 % amsthm環境と競合するため，設定したあとで読み込む．
 % https://ctan.org/tex-archive/macros/latex/contrib/thmbox
-\usepackage[nocut, nounderline]{thmbox}
-\thmboxoptions{titlestyle={\,(\textbf{#1})}}
-\thmboxoptions{bodystyle=\upshape\noindent}
-\newtheorem[S]{question}{問題}
+%\usepackage[nocut, nounderline]{thmbox}
+%\thmboxoptions{titlestyle={\,(\textbf{#1})}}
+%\thmboxoptions{bodystyle=\upshape\noindent}
+%\newtheorem[S]{question}{問題}
 
 % % % Config for hyperref
 \hypersetup{ %
@@ -101,15 +97,13 @@
 \newcommand{\dom}{\operatorname{dom}}
 \newcommand{\cod}{\operatorname{cod}}
 
+\newcommand{\mySpace}{\phantom{\rule[-1cm]{2cm}{2cm}}}
+
 % % % Re-define names
 
 \begin{document}
 	% % % Begin of Body
 	% Chapterごとにファイルを分けて，それぞれをincludeする
-	%\include{./Exercise/Ex01}
-	%\include{./Exercise/Ex02}
-	%\include{./Exercise/Ex03}
-	%\include{./Exercise/Ex04}
-	\include{./Exercise/Midterm}
+	\include{./Exam/Midterm2017}
 	% % % End of Body
 \end{document}

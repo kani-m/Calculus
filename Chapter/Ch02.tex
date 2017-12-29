@@ -1,4 +1,4 @@
-\chapter{初等関数}
+\chapter{初等関数}\label{chap:function}
 この章では，中学校・高等学校で学んだ\textbf{関数}について改めて定義を確かめ，その例である初等関数を個別に紹介する．
 
 \section{関数とは}
@@ -359,8 +359,9 @@
 \end{rem*}
 \footnotetext[2]{当然，解が存在しない場合も考えられ，その場合の解集合は，空集合$\emptyset$である．}
 \begin{definition}[閉区間・開区間]
-	ある実数$a, b$について（ただし$a \leq b$），\textbf{閉区間}$\left[a, b\right]$とは，$\set{x \mid a \leq x \leq b}$となる集合のことである．また，\textbf{開区間}$\left(a, b\right)$とは，$\set{x \mid a < x < b}$となる集合のことである．不等号の組み合わせによって，$\left[a, b\right) = \set{x \mid a \leq x < b}$と$\left(a, b\right] = \set{x \mid a < x \leq b}$も定義される．
+	ある実数$a, b$について（ただし$a \leq b$），\textbf{閉区間}$\left[a, b\right]$とは，$\set{x \mid a \leq x \leq b}$となる集合のことである．また，\textbf{開区間}$\left(a, b\right)$とは，$\set{x \mid a < x < b}$となる集合のことである．不等号の組み合わせによって，$\left[a, b\right) = \set{x \mid a \leq x < b}$と$\left(a, b\right] = \set{x \mid a < x \leq b}$も定義される\footnotemark[3]．
 \end{definition}
+\footnotetext[3]{$\left[a, b\right)$を右半開区間，$\left(a, b\right]$を左半開区間と呼び，両者をまとめて半開区間と呼ぶ．また，開区間・半開区間・閉区間をまとめて，区間と呼ぶ．}
 \begin{rem*}
 	$\left(a, b\right)$と書かれている場合，文脈から開区間なのか順序対なのか判断する必要がある．また，閉区間・開区間については，数直線上に描くことができ，図\ref{fig:interval}のようになる．特に，ある実数$c$よりも小さい数の集合を，$\left(-\infty, c\right)$と表記したり，ある実数$c$以上の数の集合を$\left[c, \infty\right)$と表記したりする．
 	
@@ -825,14 +826,14 @@
 	\node[above left] at (axis cs:1,0) {A};
 	
 	\draw[name path=op] (axis cs:0,0) -- ++(45:5.5cm);
-	\fill[name intersections={of=circle and op}] (intersection-1) circle (0pt) node[anchor=west] {P=$(\cos\theta, \sin\theta)$};
+	\fill[black, name intersections={of=circle and op}] (intersection-1) circle [x radius=.5mm, y radius=.5mm, rotate=0] node[anchor=west] {P=$(\cos\theta, \sin\theta)$};
 	
 	\coordinate (O) at (axis cs:0,0);
 	\coordinate (A) at (axis cs:1,0);
 	\draw pic["$\theta$",draw=black, ->, thick, angle eccentricity=1.2, angle radius=1cm] {angle=A--O--intersection-1};
 	
 	\draw[name path=ot] (axis cs:1,-1.3) -- (axis cs:1,1.3);
-	\fill[name intersections={of=op and ot}] (intersection-1) circle (0pt) node[anchor=west] {T=$(1, \tan\theta)$};
+	\fill[black, name intersections={of=op and ot}] (intersection-1) circle [x radius=.5mm, y radius=.5mm, rotate=0] node[anchor=west] {T=$(1, \tan\theta)$};
 	\end{axis}	
 	\end{tikzpicture}
 	\caption{三角関数の定義}
@@ -964,6 +965,9 @@
 		\addplot[samples=200, domain = -pi/3:pi/3]{tan(deg(x))};
 		\addplot[samples=200, domain = 2*pi/3:4*pi/3]{tan(deg(x))};
 		\addplot[samples=200, domain = 5*pi/3:7*pi/3]{tan(deg(x))};
+		\addplot[dashed, samples=200, domain = -2:2]({-pi/2},{x});
+		\addplot[dashed, samples=200, domain = -2:2]({pi/2},{x});
+		\addplot[dashed, samples=200, domain = -2:2]({3*pi/2},{x});
 		\end{axis}	
 		\end{tikzpicture}
 		\caption{$\tan\theta$のグラフ}
@@ -1030,6 +1034,17 @@
 \end{example*}
 % % % 倍角・半角の公式の導出や和積・積和の公式の導出
 % % % 例題を入れる
+\begin{example*}
+	例えば，$\SI{105}{\degree} = \SI{60}{\degree} + \SI{45}{\degree}$であるため，
+	\begin{align*}
+		\sin\SI{105}{\degree} &= \sin\left(\SI{60}{\degree} + \SI{45}{\degree}\right) \\
+		&= \sin\SI{60}{\degree}\cos\SI{45}{\degree} + \cos\SI{60}{\degree}\sin\SI{45}{\degree} \\
+		&= \frac{\sqrt{3}}{2}\cdot\frac{1}{\sqrt{2}} + \frac{1}{2}\cdot\frac{1}{\sqrt{2}} \\
+		&= \frac{\sqrt{3} + 1}{2\sqrt{2}} \\
+		&= \frac{\sqrt{6} + \sqrt{2}}{4} 
+	\end{align*}
+	と計算することができる．
+\end{example*}
 
 \clearpage
 \section{逆三角関数}

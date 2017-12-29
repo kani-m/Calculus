@@ -8,8 +8,8 @@
 %\usepackage[top=1truein, bottom=1truein, left=1.5truein, right=1truein]{geometry} % 用紙サイズの設定のため
 
 % % % Necessary
-\usepackage{amssymb, amsmath, amsthm, latexsym} % For mathematics [Before hyperref]
-\usepackage{empheq} % For mathematics
+\usepackage{amssymb, amsmath, latexsym} % For mathematics [Before hyperref]
+\usepackage[ntheorem]{empheq} % For mathematics
 \usepackage[dvipdfmx,setpagesize=false]{hyperref} % For inserting hyperlink [Before graphicx]
 \usepackage{pxjahyper} % https://texwiki.texjp.org/?hyperref
 \usepackage[dvipdfmx]{graphicx} % For inserting figure
@@ -75,16 +75,31 @@
 \newcommand{\cmark}{\ding{51}}
 \newcommand{\xmark}{\ding{55}}
 
-% % % AMS-Theorem Environment
-\theoremstyle{definition}
-\newtheorem*{theorem*}{定理}
+% 証明環境などの構築のために導入 -> amsthm を削除
+% https://tex.stackexchange.com/questions/5599/theorem-packages-which-to-use-which-conflict
+% https://tex.stackexchange.com/questions/50845/empheq-conflict-with-ntheorem
+\usepackage[amsmath, thmmarks, thref]{ntheorem}
+
+% 例・注意環境の定義
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\upshape}
+\theoremstyle{plain}
+\theoremseparator{.}
+\newtheorem*{example*}{例}
+\newtheorem*{rem*}{注意}
+
+% 証明環境の定義
+\theoremstyle{nonumberplain}
+\theoremseparator{:}
+\theoremsymbol{\text{\tiny (Q.E.D.)}}
+\newtheorem{Proof}{証明}
+
+%\newtheorem*{theorem*}{定理}
 %\newtheorem{prop}[theorem]{命題}
 %\newtheorem{lemma}[theorem]{補題}
 %\newtheorem{cor}[theorem]{系}
 %\newtheorem{example}{例}[theorem]
-\newtheorem*{example*}{例}
-\newtheorem*{definition*}{定義}
-\newtheorem*{rem*}{注意}
+%\newtheorem*{definition*}{定義}
 %\newtheorem{guide}[theorem]{参考}
 
 % 試験的に導入（定義を枠で囲むため）．2005年だからパッケージとしては古いか？（もっといいのがあるかも）
